@@ -107,12 +107,12 @@ fun Dashboard() {
                             elevation = 8.dp,
                             spotColor = Color.Black.copy(alpha = 0.3f),
                             ambientColor = Color.Black.copy(alpha = 0.1f),
-                            shape = RoundedCornerShape(12.dp)
+                            shape = RoundedCornerShape(10.dp)
                         )
-                        .background(Color.White, RoundedCornerShape(12.dp))
+                        .background(Color.White, RoundedCornerShape(10.dp))
                         .border(
                             border = BorderStroke(width = 1.dp, color = borderLightGrey),
-                            shape = RoundedCornerShape(12.dp)
+                            shape = RoundedCornerShape(10.dp)
                         )
                 ) {
                     LazyColumn(
