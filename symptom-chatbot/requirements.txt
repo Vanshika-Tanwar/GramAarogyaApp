@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+scikit-learn
+pyttsx3
+gTTS
+google-cloud-translate
+python-multipart
+torch
