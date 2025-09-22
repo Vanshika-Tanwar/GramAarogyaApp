@@ -1,9 +1,27 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+}
+val localPropertiesFile = rootProject.file("local.properties")
+val localProperties = Properties()
+if (localPropertiesFile.exists()) {
+    try {
+        localPropertiesFile.inputStream().use { inputStream ->
+            localProperties.load(inputStream)
+        }
+    } catch (e: Exception) {
+        println("Error reading local.properties: ${e.message}")
+    }
 }
 
+
+// Access the GEMINI_API_KEY from local.properties.
+val geminiApiKey: String = localProperties.getProperty("GEMINI_API_KEY") ?: ""
 android {
     namespace = "com.example.gramaarogya"
     compileSdk = 36
@@ -16,6 +34,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        //buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
+        buildConfigField("String", "GEMINI_API_KEY", "$geminiApiKey")
+
     }
 
     buildTypes {
@@ -36,6 +57,12 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
@@ -48,6 +75,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    //implementation(libs.room.compiler)
+    //implementation(libs.androidx.media3.common.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,4 +90,12 @@ dependencies {
 
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    //gemini api
+    implementation(libs.generativeai)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation("androidx.compose.ui:ui-tooling:1.9.1")
+
+    //icons
+    implementation("androidx.compose.material:material-icons-extended")
 }

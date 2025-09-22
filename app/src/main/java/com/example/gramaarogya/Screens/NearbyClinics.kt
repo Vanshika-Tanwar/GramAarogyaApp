@@ -1,5 +1,6 @@
 package com.example.gramaarogya.Screens
-
+// maps api key : AIzaSyB6IxaqsuefQ9RqVSI0QI4hehMfKhLFq0U
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +34,7 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarColors
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -55,7 +57,14 @@ import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.searchBarGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
-
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.filled.Videocam
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.input.ImeAction
+@SuppressLint("ViewModelConstructorInComposable")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
@@ -116,91 +125,90 @@ fun NearbyClinics() {
                 .padding(innerPadding)
                 .background(bgWhite)
                 .fillMaxSize()
-                .padding(10.dp)
+                //.padding(10.dp)
         ) {
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 5.dp)
+                    //.padding(horizontal = 5.dp)
                     .background(bgWhite)
                     .fillMaxSize()
+                    .align(Alignment.Center)
             ) {
-                SearchBar(
-                    modifier = Modifier
-                        .fillMaxWidth(0.95f)
-                        .align(Alignment.CenterHorizontally)
-                        .shadow(
-                            elevation = 8.dp,
-                            spotColor = Color.Black.copy(alpha = 0.3f),
-                            ambientColor = Color.Black.copy(alpha = 0.1f),
-                            shape = RoundedCornerShape(10.dp)
-                        )
-                        .border(
-                            border = BorderStroke(width = 1.dp, color = borderLightGrey),
-                            shape = RoundedCornerShape(10.dp)
-                        ),
-                    query = text,
-                    onQueryChange = { text = it },
-                    onSearch = { active = false },
+                CustomSearchBar(
+                    text = text,
+                    onTextChange = { text = it },
+                    onSearch = {
+                        // Perform your search query here
+                        active = false
+                        // Log the search query for debugging
+                        println("Searching for: $text")
+                    },
+                    onCloseClick = {
+                        text = ""
+                        active = false
+                    },
                     active = active,
-                    onActiveChange = { active = it },
-                    placeholder = { Text(text = "Search clinics") },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "search icon"
-                        )
-                    },
-                    trailingIcon = {
-                        if (active) {
-                            Icon(
-                                modifier = Modifier.clickable {
-                                    if (text.isNotEmpty()) {
-                                        text = ""
-                                    } else {
-                                        active = false
-                                    }
-                                },
-                                imageVector = Icons.Default.Close,
-                                contentDescription = "close icon"
-                            )
-                        }
-                    },
-                    colors = SearchBarDefaults.colors(
-                        containerColor = searchBarGrey,
-                        inputFieldColors = TextFieldDefaults.colors(
-                            focusedContainerColor = searchBarGrey,
-                            unfocusedContainerColor = searchBarGrey,
-                            disabledContainerColor = searchBarGrey,
-                            cursorColor = Color.Black,
-                            focusedTextColor = Color.Black,
-                            unfocusedTextColor = Color.Black
-                        )
-                    )
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Box (
+                    modifier = Modifier.padding(horizontal = 10.dp)
                 ) {
-                    // maps api key : AIzaSyB6IxaqsuefQ9RqVSI0QI4hehMfKhLFq0U
-                    // IMPLEMENT SEARCH CLINICS QUERIES
+                    if (text.isEmpty() && !active) {
+                        Text(text = "Start typing to search for clinics...")
+                    } else {
+                        Text(text = "Displaying search results for '$text'")
+                    }
                 }
+
                 Spacer(modifier = Modifier.height(10.dp))
+
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
                         .background(Color.White)
                         .fillMaxWidth()
                         .fillMaxHeight(0.45f)
 //                        .shadow(
-//                            elevation = 8.dp,
-//                            spotColor = Color.Black.copy(alpha = 0.9f),
-//                            ambientColor = Color.Black.copy(alpha = 0.6f),
-//                            shape = RoundedCornerShape(10.dp)
+//                            elevation = 16.dp,
+//                            spotColor = Color.Black.copy(alpha = 0.6f),
+//                            ambientColor = Color.Black.copy(alpha = 0.5f)
 //                        )
                 ) {
                     MapScreen(MapsViewModel())
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter) // Align to the bottom of the map container
+                            .fillMaxWidth()
+                            .height(25.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(Color.Transparent, bgWhite),
+                                    startY = 0f,
+                                    endY = Float.POSITIVE_INFINITY
+                                )
+                            )
+                    )
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter) // Align to the bottom of the map container
+                            .fillMaxWidth()
+                            .height(25.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(bgWhite, Color.Transparent),
+                                    startY = 0f,
+                                    endY = Float.POSITIVE_INFINITY
+                                )
+                            )
+                    )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Box (
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(5.dp)
+                        .padding(10.dp)
                         .shadow(
                             elevation = 8.dp,
                             spotColor = Color.Black.copy(alpha = 0.3f),
@@ -214,12 +222,27 @@ fun NearbyClinics() {
                         )
                 ) {
                     LazyColumn(
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
                     ) {
                         items(clinicList) { clinics ->
-                            displayClinics(
-                                clinics = clinics
-                            )
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 6.dp),
+                                shape = RoundedCornerShape(12.dp),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = searchBarGrey
+                                )
+                            ) {
+                                // Your existing displayClinics composable goes here
+                                displayClinics(
+                                    clinics = clinics
+                                )
+                            }
+//                            displayClinics(
+//                                clinics = clinics
+//                            )
                         }
                     }
                 }
@@ -246,7 +269,7 @@ fun displayClinics(clinics: Clinics) {
                 .fillMaxWidth()
                 .padding(5.dp)
         ) {
-            Text(text = clinics.title, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            Text(text = clinics.title, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -268,6 +291,11 @@ fun displayClinics(clinics: Clinics) {
                     contentDescription = "phone symbol"
                 )
                 Spacer(modifier = Modifier.width(2.dp))
+                Icon(
+                    imageVector = Icons.Default.Videocam,
+                    contentDescription = "phone symbol"
+                )
+                Spacer(modifier = Modifier.width(2.dp))
                 Text(
                     text = clinics.phoneNo.toString(),
                     style = TextStyle(color = textLightGrey),
@@ -276,5 +304,71 @@ fun displayClinics(clinics: Clinics) {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun CustomSearchBar(
+    text: String,
+    onTextChange: (String) -> Unit,
+    onSearch: () -> Unit,
+    onCloseClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    active: Boolean
+) {
+    Column (
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        TextField(
+            value = text,
+            onValueChange = onTextChange,
+            modifier = modifier
+                .fillMaxWidth(0.9f)
+                .shadow(
+                    elevation = 8.dp,
+                    shape = RoundedCornerShape(10.dp),
+                    spotColor = Color.Black.copy(alpha = 0.6f),
+                    ambientColor = Color.Black.copy(alpha = 0.5f)
+                )
+                .border(
+                    border = BorderStroke(width = 0.5.dp, color = borderLightGrey),
+                    shape = RoundedCornerShape(10.dp)
+                ),
+            placeholder = {
+                Text(text = "Search clinics", color = Color.Gray)
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search Icon"
+                )
+            },
+            trailingIcon = {
+                if (active) {
+                    Icon(
+                        modifier = Modifier.clickable { onCloseClick() },
+                        imageVector = Icons.Default.Close,
+                        contentDescription = "Close Icon"
+                    )
+                }
+            },
+            singleLine = true,
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                cursorColor = Color.Black,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(10.dp),
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = { onSearch() }
+            )
+        )
     }
 }

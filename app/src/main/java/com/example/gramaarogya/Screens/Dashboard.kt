@@ -17,9 +17,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -39,6 +42,7 @@ import com.example.gramaarogya.Models.DashboardFeatures
 import com.example.gramaarogya.R
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
+import com.example.gramaarogya.ui.theme.searchBarGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
@@ -88,7 +92,7 @@ fun Dashboard() {
                 modifier = Modifier
                     .background(bgWhite)
                     .fillMaxSize()
-                    .padding(horizontal = 20.dp, vertical = 40.dp)
+                    .padding(horizontal = 20.dp, vertical = 20.dp)
             ) {
                 Box(
                     modifier = Modifier
@@ -98,11 +102,12 @@ fun Dashboard() {
                 ) {
                     Text(text = "Welcome $patientName", fontSize = 20.sp, style = TextStyle(color = bgWhite), fontWeight = FontWeight.Bold)
                 }
-                Spacer(modifier = Modifier.height(70.dp))
+                Spacer(modifier = Modifier.height(40.dp))
                 Text(text = "How can we help you", style = TextStyle(color = Color.Black), fontSize = 28.sp, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.height(10.dp))
                 Box (
                     modifier = Modifier
-                        .fillMaxHeight(0.6f)
+                        .fillMaxHeight(0.7f)
                         .shadow(
                             elevation = 8.dp,
                             spotColor = Color.Black.copy(alpha = 0.3f),
@@ -116,16 +121,24 @@ fun Dashboard() {
                         )
                 ) {
                     LazyColumn(
-                        modifier = Modifier.fillMaxSize()
-                            // .clip(RoundedCornerShape(16.dp))
-                            // .fillMaxHeight(0.68f)
-                            // .background(Color.White)
+                        modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
                     ) {
                         items(featureList) { features ->
-                            displayFeatures(
-                                dashboardFeatures = features,
-                                onClick = { }
-                            )
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 10.dp, vertical = 6.dp),
+                                shape = RoundedCornerShape(12.dp),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = searchBarGrey
+                                )
+                            ) {
+                                displayFeatures(
+                                    dashboardFeatures = features,
+                                    onClick = { }
+                                )
+                            }
                         }
                     }
                 }
@@ -134,7 +147,7 @@ fun Dashboard() {
                     painterResource(R.drawable.logo),
                     contentDescription = "logo",
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxHeight()
                         .align(Alignment.CenterHorizontally)
                 )
             }
@@ -156,7 +169,7 @@ fun displayFeatures(dashboardFeatures: DashboardFeatures, onClick: () -> Unit) {
             contentDescription = "feature logo",
             modifier = Modifier.size(60.dp)
         )
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.width(10.dp))
         Column (
             modifier = Modifier.fillMaxWidth()
         ) {
