@@ -6,15 +6,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialogDefaults.shape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -34,6 +31,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
 import com.example.gramaarogya.R
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.optionColor
@@ -41,8 +40,7 @@ import com.example.gramaarogya.ui.theme.selectionColor
 import com.example.gramaarogya.ui.theme.textGrey
 
 @Composable
-@Preview
-fun SelectLanguage() {
+fun SelectLanguage(navHostController: NavHostController) {
 
     var selected_language by remember { mutableStateOf<String?>(null) }
 
@@ -100,7 +98,7 @@ fun SelectLanguage() {
                     Spacer(modifier = Modifier.height(7.dp))
                     Button(
                         // selected lang ko ek data class mai store krwa denge / pass on to next screen
-                        onClick = { },
+                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.phnScreen.route) },
                         enabled = (selected_language != null),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Black,

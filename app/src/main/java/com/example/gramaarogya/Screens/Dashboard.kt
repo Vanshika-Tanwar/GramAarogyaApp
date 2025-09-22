@@ -1,12 +1,10 @@
 package com.example.gramaarogya.Screens
 
-import android.view.RoundedCorner
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,46 +29,47 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.gramaarogya.Models.DashboardFeatures
+import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
 import com.example.gramaarogya.R
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
-@Preview
-fun Dashboard() {
+fun Dashboard(navHostController: NavController? = null) {
     val featureList = listOf(
         DashboardFeatures(
             title = "Consult a Doctor",
+            route = "videocall",
             description = "desc",
             imgResID = R.drawable.logo
         ),
         DashboardFeatures(
             title = "Medicine Availability",
+            route = "nearbyclinic",
             description = "desc",
-            imgResID = R.drawable.logo
         ),
         DashboardFeatures(
             title = "Health Records",
+            route = "profile",
             description = "desc",
-            imgResID = R.drawable.logo
         ),
         DashboardFeatures(
             title = "Symptom Checker",
+            route = "chatbot",
             description = "desc",
-            imgResID = R.drawable.logo
         ),
         DashboardFeatures(
             title = "Nearby Clinics",
+            route = "nearbyclinic",
             description = "desc",
-            imgResID = R.drawable.logo
         )
     )
-    val patientName = "default_name" // get name from DB
+    val patientName = "Jaspreet Singh" // get name from DB, hardcoded for now
 
     Scaffold (
         containerColor = bgWhite,
@@ -124,7 +122,7 @@ fun Dashboard() {
                         items(featureList) { features ->
                             displayFeatures(
                                 dashboardFeatures = features,
-                                onClick = { }
+                                onClick = { navHostController?.navigate(features.route) }
                             )
                         }
                     }
