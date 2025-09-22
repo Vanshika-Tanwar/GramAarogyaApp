@@ -20,8 +20,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -37,13 +35,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.gramaarogya.R.drawable.prof
 
 data class Consultation(val doctorName: String, val clinic: String, val date: String)
 
 @Composable
-@Preview
-fun ProfileScreen() {
+fun ProfileScreen(navHostController: NavHostController) {
     val recentConsultations = listOf(
         Consultation("Dr.ABC", "Clinic 1", "12-09-2025"),
         Consultation("Dr.ABC", "Clinic 1", "11-09-2025"),
@@ -97,11 +95,11 @@ fun ProfileScreen() {
                 }
                 Spacer(modifier = Modifier.height(32.dp))
                 // User Details Section
-                ProfileDetailField(label = "Name", value = "Vanshika Tanwar")
-                ProfileDetailField(label = "Phone Number", value = "+91 8700454942")
+                ProfileDetailField(label = "Name", value = "Jaspreet Singh")
+                ProfileDetailField(label = "Phone Number", value = "+91 8706789223")
                 ProfileDetailField(label = "Address", value = "XYZ")
-                ProfileDetailField(label = "Date of Birth", value = "13-11-2004")
-                ProfileDetailField(label = "Gender", value = "Female")
+                ProfileDetailField(label = "Date of Birth", value = "03-08-1947")
+                ProfileDetailField(label = "Gender", value = "Male")
                 Spacer(modifier = Modifier.height(20.dp))
                 // Edit Profile Button
 ////                Button(

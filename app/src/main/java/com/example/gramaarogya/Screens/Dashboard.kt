@@ -1,12 +1,10 @@
 package com.example.gramaarogya.Screens
 
-import android.view.RoundedCorner
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.gramaarogya.Models.DashboardFeatures
 import com.example.gramaarogya.R
 import com.example.gramaarogya.ui.theme.bgWhite
@@ -42,49 +40,36 @@ import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
-@Preview
-fun Dashboard() {
+fun Dashboard(navHostController: NavHostController) {
     val featureList = listOf(
         DashboardFeatures(
             title = "Consult a Doctor",
+            route = "videocall",
             description = "desc",
             imgResID = R.drawable.logo
         ),
         DashboardFeatures(
             title = "Medicine Availability",
+            route = "nearbyclinic",
             description = "desc",
-            imgResID = R.drawable.logo
         ),
-        DashboardFeatures(
-            title = "Health Records",
-            description = "desc",
-            imgResID = R.drawable.logo
-        ),
-        DashboardFeatures(
-            title = "Symptom Checker",
-            description = "desc",
-            imgResID = R.drawable.logo
-        ),
-        DashboardFeatures(
-            title = "Nearby Clinics",
-            description = "desc",
-            imgResID = R.drawable.logo
-        )
+        DashboardFeatures(title = "Health Records", route = "profile", description = "desc"),
+        DashboardFeatures(title = "Symptom Checker", route = "chatbot", description = "desc"),
+        DashboardFeatures(title = "Nearby Clinics", route = "nearbyclinic", description = "desc")
     )
-    val patientName = "default_name" // get name from DB
+    val patientName = "Jaspreet Singh" // get name from DB
 
-    Scaffold (
+    Scaffold(
         containerColor = bgWhite,
         modifier = Modifier.fillMaxSize()
-    ) {
-        innerPadding ->
-        Box (
+    ) { innerPadding ->
+        Box(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
                 .background(color = bgWhite)
         ) {
-            Column (
+            Column(
                 modifier = Modifier
                     .background(bgWhite)
                     .fillMaxSize()
@@ -96,11 +81,21 @@ fun Dashboard() {
                         .background(color = Color.Black)
                         .padding(horizontal = 15.dp, vertical = 8.dp)
                 ) {
-                    Text(text = "Welcome $patientName", fontSize = 20.sp, style = TextStyle(color = bgWhite), fontWeight = FontWeight.Bold)
+                    Text(
+                        text = "Welcome $patientName",
+                        fontSize = 20.sp,
+                        style = TextStyle(color = bgWhite),
+                        fontWeight = FontWeight.Bold
+                    )
                 }
                 Spacer(modifier = Modifier.height(70.dp))
-                Text(text = "How can we help you", style = TextStyle(color = Color.Black), fontSize = 28.sp, fontWeight = FontWeight.SemiBold)
-                Box (
+                Text(
+                    text = "How can we help you",
+                    style = TextStyle(color = Color.Black),
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Box(
                     modifier = Modifier
                         .fillMaxHeight(0.6f)
                         .shadow(
@@ -117,14 +112,14 @@ fun Dashboard() {
                 ) {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize()
-                            // .clip(RoundedCornerShape(16.dp))
-                            // .fillMaxHeight(0.68f)
-                            // .background(Color.White)
+                        // .clip(RoundedCornerShape(16.dp))
+                        // .fillMaxHeight(0.68f)
+                        // .background(Color.White)
                     ) {
                         items(featureList) { features ->
                             displayFeatures(
                                 dashboardFeatures = features,
-                                onClick = { }
+                                onClick = { navHostController?.navigate(features.route) }
                             )
                         }
                     }
@@ -144,7 +139,7 @@ fun Dashboard() {
 
 @Composable
 fun displayFeatures(dashboardFeatures: DashboardFeatures, onClick: () -> Unit) {
-    Row (
+    Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
@@ -157,11 +152,20 @@ fun displayFeatures(dashboardFeatures: DashboardFeatures, onClick: () -> Unit) {
             modifier = Modifier.size(60.dp)
         )
         Spacer(modifier = Modifier.height(15.dp))
-        Column (
+        Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = dashboardFeatures.title, style = TextStyle(color = Color.Black), fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-            Text(text = dashboardFeatures.description, style = TextStyle(color = textLightGrey), fontSize = 14.sp)
+            Text(
+                text = dashboardFeatures.title,
+                style = TextStyle(color = Color.Black),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 14.sp
+            )
+            Text(
+                text = dashboardFeatures.description,
+                style = TextStyle(color = textLightGrey),
+                fontSize = 14.sp
+            )
         }
     }
 }

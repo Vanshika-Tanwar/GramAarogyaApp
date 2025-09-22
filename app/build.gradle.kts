@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -48,6 +49,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.generativeai)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,4 +64,25 @@ dependencies {
 
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    //gemini api
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
+    implementation("androidx.compose.ui:ui-tooling:1.9.1")
+
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    //icons
+    implementation("androidx.compose.material:material-icons-extended")
+//// Import the Firebase BoM
+//    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+//
+//// AppCheck
+//    implementation("com.google.firebase:firebase-appcheck")
+//    implementation("com.google.firebase:firebase-appcheck-play-integrity")
+//
+//// Firebase Auth (if you need it)
+//    implementation("com.google.firebase:firebase-auth")
+
+
+
 }

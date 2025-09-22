@@ -22,7 +22,7 @@ import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.selectionColor
 
 @Composable
-fun SplashScreen(navHostController: NavHostController) {
+fun SplashScreen(navHostController: NavHostController?=null) {
     Scaffold(
         containerColor = bgWhite,
         modifier = Modifier.fillMaxSize()
@@ -54,7 +54,7 @@ fun SplashScreen(navHostController: NavHostController) {
             )
         }
         Handler(Looper.getMainLooper()).postDelayed(
-            Runnable { navHostController.navigate(GramAarogyaAppNavItem.langScreen.route) },
+            Runnable { navHostController?.navigate(GramAarogyaAppNavItem.langScreen.route) },
             2500
         )
     }

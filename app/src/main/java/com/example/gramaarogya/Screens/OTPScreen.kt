@@ -135,20 +135,21 @@ fun OTPScreen(navHostController: NavController? = null) {
 
         Button(
             onClick = {
-                if (otpValue.length == 6 && verificationId != null) {
-                    val credential = PhoneAuthProvider.getCredential(verificationId!!, otpValue)
-                    Firebase.auth.signInWithCredential(credential)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
-                                navHostController?.navigate(GramAarogyaAppNavItem.successScreen.route)
-                            } else {
-                                Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                } else {
-                    Toast.makeText(context, "Please enter the 6-digit OTP", Toast.LENGTH_SHORT).show()
-                }
+                navHostController?.navigate(GramAarogyaAppNavItem.successScreen.route)
+//                if (otpValue.length == 6 && verificationId != null) {
+//                    val credential = PhoneAuthProvider.getCredential(verificationId!!, otpValue)
+//                    Firebase.auth.signInWithCredential(credential)
+//                        .addOnCompleteListener { task ->
+//                            if (task.isSuccessful) {
+//                                Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+//                                navHostController?.navigate(GramAarogyaAppNavItem.successScreen.route)
+//                            } else {
+//                                Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
+//                            }
+//                        }
+//                } else {
+//                    Toast.makeText(context, "Please enter the 6-digit OTP", Toast.LENGTH_SHORT).show()
+//                }
             },
             modifier = Modifier
                 .fillMaxWidth()

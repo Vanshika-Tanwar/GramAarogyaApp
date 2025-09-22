@@ -14,7 +14,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,11 +31,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.gramaarogya.R
-import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
-fun VideoCallScreen() {
+fun VideoCallScreen(navHostController: NavHostController) {
     var isMicMuted by remember { mutableStateOf(false) }
 
     Box(
@@ -152,11 +151,5 @@ fun VideoCallScreen() {
             }
         }
     }
-}
-
-@Composable
-@Preview
-fun VideoCallScreenPreview() {
-    VideoCallScreen()
 }
 
