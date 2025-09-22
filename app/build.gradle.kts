@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -49,7 +48,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,16 +61,4 @@ dependencies {
 
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.3.0")
-
-    //Navigation
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-
-    //firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
-    implementation ("androidx.navigation:navigation-compose:2.7.6")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation ("com.google.firebase:firebase-auth-ktx:22.3.1")
-    implementation ("com.google.android.gms:play-services-auth:20.7.0")
-    implementation ("com.google.android.gms:play-services-auth-api-phone")
-    implementation("com.google.firebase:firebase-appcheck-playintegrity")
 }
