@@ -13,6 +13,8 @@ import com.example.gramaarogya.Screens.profile.ProfileScreen
 import com.example.gramaarogya.Screens.lang.SelectLanguage
 import com.example.gramaarogya.Screens.splash.SplashScreen
 import com.example.gramaarogya.Screens.videocall.VideoCallScreen
+import com.example.gramaarogya.Screens.SignIn.SignInScreen
+import com.example.gramaarogya.Screens.SignUp.RegisterScreen
 
 @Composable
 fun GramAarogyaAppNav(navHostController : NavHostController){
@@ -41,8 +43,12 @@ fun GramAarogyaAppNav(navHostController : NavHostController){
             val chatViewModel: ChatViewModel = viewModel()
             ChatBotScreen(chatViewModel = chatViewModel, navHostController = navHostController)
         }
-
-
+        composable(GramAarogyaAppNavItem.SignUpScreen.route){
+            RegisterScreen(navHostController)
+        }
+        composable(GramAarogyaAppNavItem.SignInScreen.route){
+            SignInScreen(navHostController)
+        }
     }
 
 

@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             val navHostController = rememberNavController()
-           GramAarogyaAppNav(navHostController = navHostController)
+            GramAarogyaAppNav(navHostController = navHostController)
         }
     }
 }

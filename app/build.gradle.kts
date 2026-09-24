@@ -20,6 +20,8 @@ android {
         manifestPlaceholders["GEMINI_API_KEY"] = "dummy_key_placeholder"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["MAPS_API_KEY"] = ""
+        manifestPlaceholders["GEMINI_API_KEY"] = ""
     }
 
     buildTypes {
