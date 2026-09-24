@@ -11,5 +11,6 @@ sealed class GramAarogyaAppNavItem(val route: String) {
     object clinicScreen : GramAarogyaAppNavItem("nearbyclinic")
     object profScreen : GramAarogyaAppNavItem("profile")
     object botScreen : GramAarogyaAppNavItem("chatbot")
-
+    object SignUpScreen : GramAarogyaAppNavItem("signup")
+    object SignInScreen : GramAarogyaAppNavItem("signin")
 }

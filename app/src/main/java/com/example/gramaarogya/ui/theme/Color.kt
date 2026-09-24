@@ -18,3 +18,13 @@ val textLightGrey = Color(0xFF828282)
 val borderLightGrey = Color(0xFFE0E0E0)
 val searchBarGrey = Color(0xFFF5F5F5)
 val chatModelResponseGrey = Color(0xFFE9E9EB)
+
+val navBarWhite = Color(0xFFF9FAFB)
+//val bgWhite = Color(0xFFFAF7F7)
+val koffiBrown = Color(0xFF451c19)
+val bgSpecialGray = Color(0xFFEBECF5);
+
+//val bgCartGray = Color(0xFFf7f7f7);
+val bgCartGray = Color(0xFFe6e6e8);
+
+val lightgray = Color(0xFFE4E4E4)

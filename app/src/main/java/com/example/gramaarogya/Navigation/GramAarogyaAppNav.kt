@@ -13,6 +13,8 @@ import com.example.gramaarogya.Screens.NearbyClinics
 import com.example.gramaarogya.Screens.PhnScreen
 import com.example.gramaarogya.Screens.ProfileScreen
 import com.example.gramaarogya.Screens.SelectLanguage
+import com.example.gramaarogya.Screens.SignIn.SignInScreen
+import com.example.gramaarogya.Screens.SignUp.RegisterScreen
 import com.example.gramaarogya.Screens.SplashScreen
 import com.example.gramaarogya.Screens.SuccessScreen
 import com.example.gramaarogya.Screens.VideoCallScreen
@@ -53,8 +55,12 @@ fun GramAarogyaAppNav(navHostController : NavHostController){
             val chatViewModel: ChatViewModel = viewModel()
             ChatBotScreen(chatViewModel = chatViewModel, navHostController = navHostController)
         }
-
-
+        composable(GramAarogyaAppNavItem.SignUpScreen.route){
+            RegisterScreen(navHostController)
+        }
+        composable(GramAarogyaAppNavItem.SignInScreen.route){
+            SignInScreen(navHostController)
+        }
     }
 
 

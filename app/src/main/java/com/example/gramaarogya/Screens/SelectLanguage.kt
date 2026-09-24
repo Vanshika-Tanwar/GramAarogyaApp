@@ -98,7 +98,8 @@ fun SelectLanguage(navHostController: NavHostController) {
                     Spacer(modifier = Modifier.height(7.dp))
                     Button(
                         // selected lang ko ek data class mai store krwa denge / pass on to next screen
-                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.phnScreen.route) },
+                        //onClick = {navHostController.navigate(GramAarogyaAppNavItem.dashboardScreen.route) },
+                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.SignUpScreen.route) },
                         enabled = (selected_language != null),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Black,
