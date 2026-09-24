@@ -1,21 +1,18 @@
 package com.example.gramaarogya.Navigation
 
-import OTPScreen
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.gramaarogya.Screens.ChatBotScreen
-import com.example.gramaarogya.Screens.ChatViewModel
-import com.example.gramaarogya.Screens.Dashboard
-import com.example.gramaarogya.Screens.NearbyClinics
-import com.example.gramaarogya.Screens.PhnScreen
-import com.example.gramaarogya.Screens.ProfileScreen
-import com.example.gramaarogya.Screens.SelectLanguage
-import com.example.gramaarogya.Screens.SplashScreen
-import com.example.gramaarogya.Screens.SuccessScreen
-import com.example.gramaarogya.Screens.VideoCallScreen
+import com.example.gramaarogya.Screens.chatbot.ChatBotScreen
+import com.example.gramaarogya.Screens.chatbot.ChatViewModel
+import com.example.gramaarogya.Screens.dashboard.Dashboard
+import com.example.gramaarogya.Screens.nearby.NearbyClinics
+import com.example.gramaarogya.Screens.profile.ProfileScreen
+import com.example.gramaarogya.Screens.lang.SelectLanguage
+import com.example.gramaarogya.Screens.splash.SplashScreen
+import com.example.gramaarogya.Screens.videocall.VideoCallScreen
 
 @Composable
 fun GramAarogyaAppNav(navHostController : NavHostController){
@@ -26,15 +23,6 @@ fun GramAarogyaAppNav(navHostController : NavHostController){
         }
         composable(GramAarogyaAppNavItem.langScreen.route){
             SelectLanguage(navHostController)
-        }
-        composable(GramAarogyaAppNavItem.phnScreen.route){
-            PhnScreen(navHostController)
-        }
-        composable(GramAarogyaAppNavItem.otpScreen.route){
-            OTPScreen(navHostController)
-        }
-        composable(GramAarogyaAppNavItem.successScreen.route){
-            SuccessScreen(navHostController)
         }
         composable(GramAarogyaAppNavItem.dashboardScreen.route){
             Dashboard(navHostController)

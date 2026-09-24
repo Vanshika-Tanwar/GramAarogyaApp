@@ -16,6 +16,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        manifestPlaceholders["MAPS_API_KEY"] = "dummy_key_placeholder"
+        manifestPlaceholders["GEMINI_API_KEY"] = "dummy_key_placeholder"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -51,6 +54,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.generativeai)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,19 +74,14 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("androidx.compose.ui:ui-tooling:1.9.1")
 
+    //navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     //icons
     implementation("androidx.compose.material:material-icons-extended")
-//// Import the Firebase BoM
-//    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-//
-//// AppCheck
-//    implementation("com.google.firebase:firebase-appcheck")
-//    implementation("com.google.firebase:firebase-appcheck-play-integrity")
-//
-//// Firebase Auth (if you need it)
-//    implementation("com.google.firebase:firebase-auth")
 
-
+    //Authentication
+    implementation("com.google.android.gms:play-services-auth:21.4.0")
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.2.0")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity:19.0.1")
 
 }

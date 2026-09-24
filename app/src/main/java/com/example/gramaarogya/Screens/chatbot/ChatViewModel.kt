@@ -1,13 +1,10 @@
-package com.example.gramaarogya.Screens
+package com.example.gramaarogya.Screens.chatbot
 
-//import androidx.annotation.OptIn
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gramaarogya.Constants
 import com.example.gramaarogya.Models.Messages
-//import androidx.media3.common.util.Log
-//import androidx.media3.common.util.UnstableApi
+import com.example.gramaarogya.Screens.Constants
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.ServerException
 import com.google.ai.client.generativeai.type.content

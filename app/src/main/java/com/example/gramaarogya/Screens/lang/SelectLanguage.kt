@@ -1,4 +1,4 @@
-package com.example.gramaarogya.Screens
+package com.example.gramaarogya.Screens.lang
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,7 +28,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -98,7 +97,7 @@ fun SelectLanguage(navHostController: NavHostController) {
                     Spacer(modifier = Modifier.height(7.dp))
                     Button(
                         // selected lang ko ek data class mai store krwa denge / pass on to next screen
-                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.phnScreen.route) },
+                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.dashboardScreen.route) },
                         enabled = (selected_language != null),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Black,

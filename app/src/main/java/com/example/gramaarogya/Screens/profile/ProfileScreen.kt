@@ -1,4 +1,4 @@
-package com.example.gramaarogya.Screens
+package com.example.gramaarogya.Screens.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,16 +32,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.gramaarogya.R.drawable.prof
 
 data class Consultation(val doctorName: String, val clinic: String, val date: String)
 
 @Composable
-fun ProfileScreen(navHostController: NavHostController) {
+fun ProfileScreen(navHostController: NavHostController, viewModel: ProfileViewModel = viewModel() ) {
+
+    val profile = viewModel.profile
+    val isLoading = viewModel.isLoading
+
     val recentConsultations = listOf(
         Consultation("Dr.ABC", "Clinic 1", "12-09-2025"),
         Consultation("Dr.ABC", "Clinic 1", "11-09-2025"),
@@ -95,11 +99,14 @@ fun ProfileScreen(navHostController: NavHostController) {
                 }
                 Spacer(modifier = Modifier.height(32.dp))
                 // User Details Section
-                ProfileDetailField(label = "Name", value = "Jaspreet Singh")
-                ProfileDetailField(label = "Phone Number", value = "+91 8706789223")
-                ProfileDetailField(label = "Address", value = "XYZ")
-                ProfileDetailField(label = "Date of Birth", value = "03-08-1947")
-                ProfileDetailField(label = "Gender", value = "Male")
+                if(isLoading){
+                    Text("Loading...", fontSize = 16.sp, color = Color.Gray)
+                }else{
+                ProfileDetailField(label = "Name", value = profile.name)
+                ProfileDetailField(label = "Phone Number", value = profile.phone)
+                ProfileDetailField(label = "Address", value = profile.address)
+                ProfileDetailField(label = "Date of Birth", value = profile.dob)
+                ProfileDetailField(label = "Gender", value = profile.gender)}
                 Spacer(modifier = Modifier.height(20.dp))
                 // Edit Profile Button
 ////                Button(
