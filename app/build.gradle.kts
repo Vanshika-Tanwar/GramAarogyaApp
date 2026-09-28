@@ -10,15 +10,19 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
+    //room db
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.example.gramaarogya"
+    //36 -> 37
     compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.gramaarogya"
         minSdk = 24
+        //36 -> 37
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -63,6 +67,7 @@ dependencies {
     implementation(libs.generativeai)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    //implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -89,6 +94,19 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     //icons
     implementation("androidx.compose.material:material-icons-extended")
+
+    //room db
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+//// Import the Firebase BoM
+//    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+//
+//// AppCheck
+//    implementation("com.google.firebase:firebase-appcheck")
+//    implementation("com.google.firebase:firebase-appcheck-play-integrity")
+//
+//// Firebase Auth (if you need it)
+//    implementation("com.google.firebase:firebase-auth")
 
     //Authentication
     implementation("com.google.android.gms:play-services-auth:21.4.0")

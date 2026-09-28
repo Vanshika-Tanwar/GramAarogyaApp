@@ -2,16 +2,15 @@ package com.example.gramaarogya.Screens.SignIn
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-//import com.example.koffi.Repository.Auth.AuthRepository
+import com.example.gramaarogya.Repository.Auth.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-//import com.example.koffi.Repository.Auth.SessionManager
-
+import com.example.gramaarogya.Repository.Auth.SessionManager
 class SignInViewModel(
-    //private val repository: AuthRepository
+    private val repository: AuthRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SignInUiState())
@@ -69,33 +68,33 @@ class SignInViewModel(
                 )
             }
 
-//            val user = repository.login(
-//                email = state.email.trim(),
-//                password = state.password
-//            )
-//
-//            if (user != null) {
-//
-//                // Save currently logged-in user
-//                SessionManager.login(user)
-//
-//                _uiState.update {
-//                    it.copy(
-//                        isLoading = false
-//                    )
-//                }
-//
-//                onSuccess()
-//
-//            } else {
-//
-//                _uiState.update {
-//                    it.copy(
-//                        isLoading = false,
-//                        errorMessage = "Invalid email or password"
-//                    )
-//                }
-//            }
+            val user = repository.login(
+                email = state.email.trim(),
+                password = state.password
+            )
+
+            if (user != null) {
+
+                // Save currently logged-in user
+                SessionManager.login(user)
+
+                _uiState.update {
+                    it.copy(
+                        isLoading = false
+                    )
+                }
+
+                onSuccess()
+
+            } else {
+
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = "Invalid email or password"
+                    )
+                }
+            }
         }
     }
 }
