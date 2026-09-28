@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.generativeai)
     implementation(libs.firebase.auth)
-    //implementation(libs.firebase.firestore)
+    implementation(libs.firebase.firestore)
     //implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
