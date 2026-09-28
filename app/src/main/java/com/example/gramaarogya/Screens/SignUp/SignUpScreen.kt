@@ -40,47 +40,29 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-//import com.example.koffi.Navigation.AppNavigationItem
-//import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
+import com.example.gramaarogya.Database.AppDatabase
+import com.example.gramaarogya.Navigation.GramAarogyaAppNav
 import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
+import com.example.gramaarogya.Repository.Auth.AuthRepository
+import com.example.gramaarogya.Repository.Auth.AuthViewModelFactory
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.lightgray
-//import com.example.koffi.Database.AppDatabase
-//import com.example.koffi.Repository.Auth.AuthRepository
-//import com.example.koffi.Repository.Auth.AuthViewModelFactory
-//import com.example.koffi.ui.theme.bgCartGray
-//import com.example.koffi.ui.theme.bgSpecialGray
-//import com.example.koffi.ui.theme.bgWhite
-//import com.example.koffi.ui.theme.lightgray
 
 @Composable
 fun RegisterScreen(
     navHostController: NavHostController,
-    //viewModel: SignUpViewModel = viewModel()
-) {
-    val context = LocalContext.current
-
-//    val database = remember {
-//        AppDatabase.getDatabase(context)
-//    }
-//
-//    val repository = remember {
-//        AuthRepository(database.userDao())
-//    }
-//
-//    val factory = remember {
-//        AuthViewModelFactory(repository)
-//    }
-//
-    val viewModel: SignUpViewModel = viewModel(
-        //factory = factory
+    viewModel: SignUpViewModel = viewModel(
+        factory = AuthViewModelFactory(
+            AuthRepository(AppDatabase.getDatabase(LocalContext.current).userDao())
+        )
     )
+) {
     val uiState by viewModel.uiState.collectAsState()
 
     Scaffold(
@@ -319,32 +301,23 @@ fun RegisterScreen(
                 // Register button
                 Button(
                     onClick = {
-                        navHostController.navigate(
-                            GramAarogyaAppNavItem.dashboardScreen.route
-                        ) {
-                            popUpTo(
-                                GramAarogyaAppNavItem.SignUpScreen.route
+                        viewModel.registerUser {
+
+                            navHostController.navigate(
+                                GramAarogyaAppNavItem.dashboardScreen.route
                             ) {
-                                inclusive = true
+                                popUpTo(
+                                    GramAarogyaAppNavItem.SignUpScreen.route
+                                ) {
+                                    inclusive = true
+                                }
                             }
                         }
-//                        viewModel.registerUser {
-//
-//                            navHostController.navigate(
-//                                GramAarogyaAppNavItem.dashboardScreen.route
-//                            ) {
-//                                popUpTo(
-//                                    GramAarogyaAppNavItem.SignUpScreen.route
-//                                ) {
-//                                    inclusive = true
-//                                }
-//                            }
-//                        }
                     },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(54.dp),
-                    //enabled = !uiState.isLoading && viewModel.canRegister()
+                    enabled = !uiState.isLoading && viewModel.canRegister()
                 ) {
                     Text("Register")
                 }
@@ -375,16 +348,16 @@ fun RegisterScreen(
                         text = " Login",
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Bold,
-                        //color = MaterialTheme.colorScheme.primary,
-//                        modifier = Modifier.clickable {
-//                            navHostController.navigate(
-//                                AppNavigationItem.SignInScreen.route
-//                            ) {
-//                                popUpTo(AppNavigationItem.SignUpScreen.route) {
-//                                    inclusive = false
-//                                }
-//                            }
-//                        }
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.clickable {
+                            navHostController.navigate(
+                                GramAarogyaAppNavItem.SignInScreen.route
+                            ) {
+                                popUpTo(GramAarogyaAppNavItem.SignUpScreen.route) {
+                                    inclusive = false
+                                }
+                            }
+                        }
                     )
                 }
 

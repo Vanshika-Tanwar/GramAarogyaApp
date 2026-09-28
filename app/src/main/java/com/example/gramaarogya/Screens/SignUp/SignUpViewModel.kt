@@ -2,14 +2,14 @@ package com.example.gramaarogya.Screens.SignUp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-//import com.example.koffi.Repository.Auth.AuthRepository
+import com.example.gramaarogya.Repository.Auth.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
-    //private val repository: AuthRepository
+    private val repository: AuthRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SignUpUiState())
@@ -96,30 +96,30 @@ class SignUpViewModel(
                 )
             }
 
-//            val registered = repository.registerUser(
-//                firstName = state.firstName,
-//                lastName = state.lastName,
-//                email = state.email,
-//                password = state.password
-//            )
+            val registered = repository.registerUser(
+                firstName = state.firstName,
+                lastName = state.lastName,
+                email = state.email,
+                password = state.password
+            )
 
-//            if (registered) {
-//
-//                _uiState.update {
-//                    it.copy(isLoading = false)
-//                }
-//
-//                onSuccess()
-//
-//            } else {
-//
-//                _uiState.update {
-//                    it.copy(
-//                        isLoading = false,
-//                        errorMessage = "An account with this email already exists"
-//                    )
-//                }
-//            }
+            if (registered) {
+
+                _uiState.update {
+                    it.copy(isLoading = false)
+                }
+
+                onSuccess()
+
+            } else {
+
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = "An account with this email already exists"
+                    )
+                }
+            }
         }
     }
 }

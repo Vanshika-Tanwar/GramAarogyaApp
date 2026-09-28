@@ -48,40 +48,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
+import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
+import com.example.gramaarogya.Repository.Auth.AuthRepository
+import com.example.gramaarogya.Repository.Auth.AuthViewModelFactory
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.lightgray
 
-//import com.example.koffi.Database.AppDatabase
-//import com.example.koffi.Repository.Auth.AuthRepository
-//import com.example.koffi.Repository.Auth.AuthViewModelFactory
-//import com.example.koffi.ui.theme.bgCartGray
-//import com.example.koffi.ui.theme.bgSpecialGray
-//import com.example.koffi.ui.theme.bgWhite
-//import com.example.koffi.ui.theme.lightgray
+
 
 @Composable
 fun SignInScreen(
     navHostController: NavHostController,
-    //viewModel: SignInViewModel = viewModel()
-) {
-    val context = LocalContext.current
-
-//    val database = remember {
-//        AppDatabase.getDatabase(context)
-//    }
-//
-//    val repository = remember {
-//        AuthRepository(database.userDao())
-//    }
-//
-//    val factory = remember {
-//        AuthViewModelFactory(repository)
-//    }
-
-    val viewModel: SignInViewModel = viewModel(
-        //factory = factory
+    viewModel: SignInViewModel = viewModel(
+        factory = AuthViewModelFactory(
+            AuthRepository(AppDatabase.getDatabase(LocalContext.current).userDao())
+        )
     )
+) {
     val uiState by viewModel.uiState.collectAsState()
 
     Scaffold(
@@ -207,31 +191,22 @@ fun SignInScreen(
 
                 Button(
                     onClick = {
-//                        viewModel.signIn {
-//                            navHostController.navigate(
-//                                GramAarogyaAppNavItem.dashboardScreen.route
-//                            ) {
-//                                popUpTo(
-//                                    GramAarogyaAppNavItem.SignInScreen.route
-//                                ) {
-//                                    inclusive = true
-//                                }
-//                            }
-//                        }
-                        navHostController.navigate(
-                            GramAarogyaAppNavItem.dashboardScreen.route
-                        ) {
-                            popUpTo(
-                                GramAarogyaAppNavItem.SignInScreen.route
+                        viewModel.signIn {
+                            navHostController.navigate(
+                                GramAarogyaAppNavItem.dashboardScreen.route
                             ) {
-                                inclusive = true
+                                popUpTo(
+                                    GramAarogyaAppNavItem.SignInScreen.route
+                                ) {
+                                    inclusive = true
+                                }
                             }
                         }
                     },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(54.dp),
-                    //enabled = viewModel.canSignIn() && !uiState.isLoading
+                    enabled = viewModel.canSignIn() && !uiState.isLoading
                 ) {
                     Text("Login")
                 }
