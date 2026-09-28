@@ -1,4 +1,4 @@
-package com.example.gramaarogya.Screens
+package com.example.gramaarogya.Screens.splash
 
 import android.os.Handler
 import android.os.Looper

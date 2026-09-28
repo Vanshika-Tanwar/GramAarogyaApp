@@ -1,4 +1,4 @@
-package com.example.gramaarogya.Screens
+package com.example.gramaarogya.Screens.nearby
 // maps api key : AIzaSyB6IxaqsuefQ9RqVSI0QI4hehMfKhLFq0U
 import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
@@ -56,6 +56,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.input.ImeAction
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.Screens.maps.MapScreen
+import com.example.gramaarogya.Screens.maps.MapsViewModel
 
 @SuppressLint("ViewModelConstructorInComposable")
 @OptIn(ExperimentalMaterial3Api::class)

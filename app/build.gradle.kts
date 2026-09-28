@@ -1,3 +1,10 @@
+import java.util.Properties
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) load(file.inputStream())
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,8 +28,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders["MAPS_API_KEY"] = ""
-        manifestPlaceholders["GEMINI_API_KEY"] = ""
+        manifestPlaceholders["MAPS_API_KEY"] = localProperties.getProperty("MAPS_API_KEY", "")
+        manifestPlaceholders["GEMINI_API_KEY"] = localProperties.getProperty("GEMINI_API_KEY", "")
     }
 
     buildTypes {
@@ -57,6 +64,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.generativeai)
     implementation(libs.firebase.auth)
+    //implementation(libs.firebase.firestore)
     //implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -77,6 +85,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("androidx.compose.ui:ui-tooling:1.9.1")
 
+    //navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     //icons
     implementation("androidx.compose.material:material-icons-extended")
@@ -93,4 +102,10 @@ dependencies {
 //
 //// Firebase Auth (if you need it)
 //    implementation("com.google.firebase:firebase-auth")
+
+    //Authentication
+    implementation("com.google.android.gms:play-services-auth:21.4.0")
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.2.0")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity:19.0.1")
+
 }
