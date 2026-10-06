@@ -13,12 +13,12 @@ class AuthRepository(
         lastName: String,
         email: String,
         password: String
-    ): Boolean {
+    ): UserEntity? {
 
         val existingUser = userDao.getUserByEmail(email)
 
         if (existingUser != null) {
-            return false
+            return null
         }
 
         val hashedPassword = PasswordHasher.hash(password)
@@ -32,7 +32,10 @@ class AuthRepository(
 
         userDao.insertUser(user)
 
-        return true
+        val registeredUser = userDao.getUserByEmail(email) ?: user
+        SessionManager.login(registeredUser)
+
+        return registeredUser
     }
 
     suspend fun login(

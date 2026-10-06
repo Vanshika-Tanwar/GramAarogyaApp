@@ -9,11 +9,19 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    val firstName: String,
+    val firstName: String = "",
 
-    val lastName: String,
+    val lastName: String = "",
 
-    val email: String,
+    val email: String = "",
 
-    val passwordHash: String
+    val passwordHash: String = "",
+
+    val phone: String = "",
+
+    val address: String = "",
+
+    val dob: String = "",
+
+    val gender: String = ""
 )

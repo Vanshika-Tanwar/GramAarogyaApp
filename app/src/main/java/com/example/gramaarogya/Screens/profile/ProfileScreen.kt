@@ -30,19 +30,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.R.drawable.prof
 
 data class Consultation(val doctorName: String, val clinic: String, val date: String)
 
 @Composable
-fun ProfileScreen(navHostController: NavHostController, viewModel: ProfileViewModel = viewModel() ) {
-
+fun ProfileScreen(
+    navHostController: NavHostController,
+    viewModel: ProfileViewModel = viewModel(
+        factory = ProfileViewModelFactory(
+            AppDatabase.getDatabase(LocalContext.current).userDao()
+        )
+    )
+) {
     val profile = viewModel.profile
     val isLoading = viewModel.isLoading
 
@@ -67,7 +75,7 @@ fun ProfileScreen(navHostController: NavHostController, viewModel: ProfileViewMo
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "Back",
-                modifier = Modifier.clickable { /* Handle back navigation */ }
+                modifier = Modifier.clickable { navHostController.popBackStack() }
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
@@ -99,30 +107,17 @@ fun ProfileScreen(navHostController: NavHostController, viewModel: ProfileViewMo
                 }
                 Spacer(modifier = Modifier.height(32.dp))
                 // User Details Section
-                if(isLoading){
+                if (isLoading) {
                     Text("Loading...", fontSize = 16.sp, color = Color.Gray)
-                }else{
-                ProfileDetailField(label = "Name", value = profile.name)
-                ProfileDetailField(label = "Phone Number", value = profile.phone)
-                ProfileDetailField(label = "Address", value = profile.address)
-                ProfileDetailField(label = "Date of Birth", value = profile.dob)
-                ProfileDetailField(label = "Gender", value = profile.gender)}
+                } else {
+                    ProfileDetailField(label = "Name", value = profile.name)
+                    ProfileDetailField(label = "Email", value = profile.email)
+                    ProfileDetailField(label = "Phone Number", value = profile.phone)
+                    ProfileDetailField(label = "Address", value = profile.address)
+                    ProfileDetailField(label = "Date of Birth", value = profile.dob)
+                    ProfileDetailField(label = "Gender", value = profile.gender)
+                }
                 Spacer(modifier = Modifier.height(20.dp))
-                // Edit Profile Button
-////                Button(
-////                    onClick = { /* Handle Edit Profile click */ },
-////                    modifier = Modifier
-////                        .fillMaxWidth()
-////                        .height(56.dp)
-////                        .padding(horizontal = 16.dp),
-////                    colors = ButtonDefaults.buttonColors(
-////                        containerColor = Color.Black,
-////                        contentColor = Color.White
-////                    )
-////                ) {
-////                    Text(text = "Edit Profile", fontSize = 18.sp)
-////                }
-//                Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
                     text = "Recent Consultations",
@@ -143,7 +138,6 @@ fun ProfileScreen(navHostController: NavHostController, viewModel: ProfileViewMo
         }
     }
 }
-
 
 @Composable
 fun ProfileDetailField(label: String, value: String) {

@@ -96,14 +96,14 @@ class SignUpViewModel(
                 )
             }
 
-            val registered = repository.registerUser(
+            val registeredUser = repository.registerUser(
                 firstName = state.firstName,
                 lastName = state.lastName,
                 email = state.email,
                 password = state.password
             )
 
-            if (registered) {
+            if (registeredUser != null) {
 
                 _uiState.update {
                     it.copy(isLoading = false)

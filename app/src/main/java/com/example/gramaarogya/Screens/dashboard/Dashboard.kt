@@ -32,20 +32,30 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.Models.DashboardFeatures
 import com.example.gramaarogya.R
 import com.example.gramaarogya.Screens.profile.ProfileViewModel
+import com.example.gramaarogya.Screens.profile.ProfileViewModelFactory
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
-fun Dashboard(navHostController: NavHostController,  viewModel: ProfileViewModel = viewModel()) {
+fun Dashboard(
+    navHostController: NavHostController,
+    viewModel: ProfileViewModel = viewModel(
+        factory = ProfileViewModelFactory(
+            AppDatabase.getDatabase(LocalContext.current).userDao()
+        )
+    )
+) {
     val featureList = listOf(
         DashboardFeatures(
             title = "Consult a Doctor",
