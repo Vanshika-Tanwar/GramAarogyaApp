@@ -47,16 +47,13 @@ import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
+
 @Composable
-fun Dashboard(
-    navHostController: NavHostController,
-    viewModel: ProfileViewModel = viewModel(
-        factory = ProfileViewModelFactory(
-            AppDatabase.getDatabase(LocalContext.current).userDao()
-        )
+fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel = viewModel(
+    factory = ProfileViewModelFactory(
+        AppDatabase.getDatabase(LocalContext.current).userDao()
     )
-) {
-fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel = viewModel()) {
+)) {
     val featureList = listOf(
         DashboardFeatures(title = "Report Analysis", route = "report", description = "desc"),
         DashboardFeatures(
