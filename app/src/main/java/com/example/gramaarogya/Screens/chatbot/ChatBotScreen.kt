@@ -43,7 +43,6 @@ import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.chatModelResponseGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
-// gemini api key AIzaSyCE9AY0_gIvCdSc9yldTD1dy2xy8CL5nCg
 @Composable
 fun ChatBotScreen(chatViewModel: ChatViewModel, navHostController: NavHostController) {
     Scaffold (

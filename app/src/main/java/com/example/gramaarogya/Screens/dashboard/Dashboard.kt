@@ -45,22 +45,25 @@ import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
-fun Dashboard(navHostController: NavHostController,  viewModel: ProfileViewModel = viewModel()) {
+fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel = viewModel()) {
     val featureList = listOf(
+        DashboardFeatures(title = "Report Analysis", route = "report", description = "desc"),
         DashboardFeatures(
             title = "Consult a Doctor",
             route = "videocall",
             description = "desc",
             imgResID = R.drawable.logo
         ),
+        DashboardFeatures(title = "Nearby Clinics", route = "nearbyclinic", description = "desc"),
+        DashboardFeatures(title = "Symptom Checker", route = "chatbot", description = "desc"),
+        DashboardFeatures(title = "Health Records", route = "profile", description = "desc"),
         DashboardFeatures(
             title = "Medicine Availability",
             route = "nearbyclinic",
             description = "desc",
-        ),
-        DashboardFeatures(title = "Health Records", route = "profile", description = "desc"),
-        DashboardFeatures(title = "Symptom Checker", route = "chatbot", description = "desc"),
-        DashboardFeatures(title = "Nearby Clinics", route = "nearbyclinic", description = "desc")
+        )
+
+
     )
     val patientName = viewModel.profile.name.ifBlank { "Jaspreet Singh" }
 
@@ -85,19 +88,19 @@ fun Dashboard(navHostController: NavHostController,  viewModel: ProfileViewModel
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(color = Color.Black)
-                        .padding(horizontal = 15.dp, vertical = 8.dp)
-                ) {
-                    Text(
-                        text = "Welcome $patientName",
-                        fontSize = 20.sp,
-                        style = TextStyle(color = bgWhite),
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(color = Color.Black)
+                            .padding(horizontal = 15.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            text = "Welcome $patientName",
+                            fontSize = 20.sp,
+                            style = TextStyle(color = bgWhite),
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                     Icon(
                         imageVector = Icons.Default.AccountCircle,
                         contentDescription = "Profile",
@@ -105,7 +108,8 @@ fun Dashboard(navHostController: NavHostController,  viewModel: ProfileViewModel
                         modifier = Modifier
                             .size(36.dp)
                             .clickable { navHostController.navigate("profile") }
-                    )}
+                    )
+                }
                 Spacer(modifier = Modifier.height(70.dp))
                 Text(
                     text = "How can we help you",
