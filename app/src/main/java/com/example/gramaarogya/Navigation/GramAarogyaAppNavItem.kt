@@ -10,4 +10,6 @@ sealed class GramAarogyaAppNavItem(val route: String) {
     object botScreen : GramAarogyaAppNavItem("chatbot")
     object SignUpScreen : GramAarogyaAppNavItem("signup")
     object SignInScreen : GramAarogyaAppNavItem("signin")
+
+    object reportScreen : GramAarogyaAppNavItem("report")
 }

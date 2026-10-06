@@ -15,6 +15,7 @@ import com.example.gramaarogya.Screens.splash.SplashScreen
 import com.example.gramaarogya.Screens.videocall.VideoCallScreen
 import com.example.gramaarogya.Screens.SignIn.SignInScreen
 import com.example.gramaarogya.Screens.SignUp.RegisterScreen
+import com.example.gramaarogya.Screens.report.ReportScreen
 
 @Composable
 fun GramAarogyaAppNav(navHostController : NavHostController){
@@ -49,7 +50,15 @@ fun GramAarogyaAppNav(navHostController : NavHostController){
         composable(GramAarogyaAppNavItem.SignInScreen.route){
             SignInScreen(navHostController)
         }
+        composable(GramAarogyaAppNavItem.reportScreen.route) {
+            ReportScreen(navHostController)
+        }
     }
 
 
+}
+
+@Composable
+fun ReportScreen(x0: NavHostController) {
+    TODO("Not yet implemented")
 }

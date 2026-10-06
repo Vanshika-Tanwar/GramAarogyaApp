@@ -3,7 +3,7 @@ package com.example.gramaarogya.Screens.chatbot
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gramaarogya.Constants
+import com.example.gramaarogya.BuildConfig
 import com.example.gramaarogya.Models.Messages
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.ServerException
@@ -16,8 +16,8 @@ class ChatViewModel: ViewModel() {
     }
 
     val generativeModel: GenerativeModel = GenerativeModel(
-        modelName = "gemini-1.5-flash",
-        apiKey = Constants.geminiAPIKey
+        modelName = "gemini-3.5-flash-lite",
+        apiKey = BuildConfig.GEMINI_API_KEY
     )
 
     fun sendMessage(question: String) {

@@ -55,6 +55,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.input.ImeAction
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.gramaarogya.Screens.maps.MapScreen
 import com.example.gramaarogya.Screens.maps.MapsViewModel
@@ -62,50 +63,9 @@ import com.example.gramaarogya.Screens.maps.MapsViewModel
 @SuppressLint("ViewModelConstructorInComposable")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
 fun NearbyClinics(navHostController: NavHostController) {
-    val clinicList = listOf(
-        Clinics(
-            id = 1,
-            title = "Harmony Health Clinic",
-            address = "SCO 12, Phase 3B2, Mohali, Punjab",
-            phoneNo = 9876543210,
-            lat = 30.7046,
-            lng = 76.7179
-        ),
-        Clinics(
-            id = 2,
-            title = "Sunrise Medical Center",
-            address = "Model Town, Ludhiana, Punjab",
-            phoneNo = 9123456780,
-            lat = 30.9000,
-            lng = 75.8573
-        ),
-        Clinics(
-            id = 3,
-            title = "Green Cross Clinic",
-            address = "Ranjit Avenue, Amritsar, Punjab",
-            phoneNo = 9988776655,
-            lat = 31.6340,
-            lng = 74.8723
-        ),
-        Clinics(
-            id = 4,
-            title = "Lifeline Health Point",
-            address = "Urban Estate, Patiala, Punjab",
-            phoneNo = 9001122334,
-            lat = 30.3398,
-            lng = 76.3869
-        ),
-        Clinics(
-            id = 5,
-            title = "CityCare Clinic",
-            address = "Ferozepur Road, Bathinda, Punjab",
-            phoneNo = 9445566778,
-            lat = 30.2110,
-            lng = 74.9455
-        )
-    )
+    val mapsViewModel: MapsViewModel = viewModel()
+    val clinicList = mapsViewModel.state.nearbyClinics
 
     var text by remember { mutableStateOf("") }
     var active by remember { mutableStateOf(false) }
@@ -171,7 +131,7 @@ fun NearbyClinics(navHostController: NavHostController) {
 //                            ambientColor = Color.Black.copy(alpha = 0.5f)
 //                        )
                 ) {
-                    MapScreen(MapsViewModel())
+                    MapScreen(mapsViewModel)
                     Box(
                         modifier = Modifier
                             .align(Alignment.BottomCenter) // Align to the bottom of the map container
@@ -291,12 +251,14 @@ fun displayClinics(clinics: Clinics) {
                     contentDescription = "phone symbol"
                 )
                 Spacer(modifier = Modifier.width(2.dp))
-                Text(
-                    text = clinics.phoneNo.toString(),
-                    style = TextStyle(color = textLightGrey),
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp
-                )
+                if (clinics.phoneNo != 0L) {
+                    Text(
+                        text = clinics.phoneNo.toString(),
+                        style = TextStyle(color = textLightGrey),
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp
+                    )
+                }
             }
         }
     }

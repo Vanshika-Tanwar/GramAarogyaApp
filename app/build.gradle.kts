@@ -30,6 +30,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders["MAPS_API_KEY"] = localProperties.getProperty("MAPS_API_KEY", "")
         manifestPlaceholders["GEMINI_API_KEY"] = localProperties.getProperty("GEMINI_API_KEY", "")
+        buildConfigField("String", "MAPS_API_KEY", "\"${localProperties.getProperty("MAPS_API_KEY", "")}\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"${localProperties.getProperty("GEMINI_API_KEY", "")}\"")
     }
 
     buildTypes {
@@ -50,6 +52,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -76,6 +79,9 @@ dependencies {
     // Google Maps API
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.maps.android:maps-compose:4.3.0")
+
+    //Places API
+    implementation("com.google.android.libraries.places:places:4.1.0")
 
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.3.0")
