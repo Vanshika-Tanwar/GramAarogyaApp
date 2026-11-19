@@ -31,6 +31,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -38,6 +40,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.gramaarogya.Models.Messages
+import com.example.gramaarogya.R
+import com.example.gramaarogya.Screens.lang.LanguageManager
 import com.example.gramaarogya.ui.theme.bgWhite
 import com.example.gramaarogya.ui.theme.borderLightGrey
 import com.example.gramaarogya.ui.theme.chatModelResponseGrey
@@ -45,6 +49,10 @@ import com.example.gramaarogya.ui.theme.textLightGrey
 
 @Composable
 fun ChatBotScreen(chatViewModel: ChatViewModel, navHostController: NavHostController) {
+    val typingText = stringResource(R.string.bot_typing)
+    val errorText = stringResource(R.string.common_generic_error)
+    val context = LocalContext.current
+    val languageCode = LanguageManager.get(context) ?: "en"
     Scaffold (
         containerColor = bgWhite,
         modifier = Modifier.fillMaxSize()
@@ -57,7 +65,7 @@ fun ChatBotScreen(chatViewModel: ChatViewModel, navHostController: NavHostContro
             // BOX -> LAZY COLUMN -> { message mutable list }
             MessageList(modifier = Modifier.weight(1f),chatViewModel.messageList)
             MessageInput(onMessageSend = {
-                chatViewModel.sendMessage(it)
+                chatViewModel.sendMessage(it, typingText, errorText, languageCode)
             })
         }
     }
@@ -72,7 +80,7 @@ fun MessageList(modifier: Modifier = Modifier, messageList: List<Messages>) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "An apple a day keeps the doctor away!",
+                text = stringResource(R.string.bot_tip),
                 fontWeight = FontWeight.Bold,
                 fontSize = 22.sp,
                 color = Color.Black,
@@ -149,7 +157,7 @@ fun MessageInput(onMessageSend: (String)->Unit) {
                 focusedTextColor = Color.Black,
                 unfocusedTextColor = Color.Black
             ),
-            placeholder = { Text(text = "Ask Doctor Sahab...") }
+            placeholder = { Text(text = stringResource(R.string.bot_placeholder)) }
         )
         IconButton(
             modifier = Modifier.align(Alignment.CenterVertically),
@@ -162,7 +170,7 @@ fun MessageInput(onMessageSend: (String)->Unit) {
         ) {
             Icon(
                 imageVector = Icons.Default.Send,
-                contentDescription = "Send Button"
+                contentDescription = stringResource(R.string.bot_send)
             )
         }
     }
@@ -191,14 +199,14 @@ fun ChatBotHeader() {
 
         ) {
             Text(
-                text = "Doctor Sahab",
+                text = stringResource(R.string.bot_name),
                 style = TextStyle(
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp
                 )
             )
-            Text(text = "your health assistant", style = TextStyle(color = textLightGrey))
+            Text(text = stringResource(R.string.bot_subtitle), style = TextStyle(color = textLightGrey))
         }
     }
 }

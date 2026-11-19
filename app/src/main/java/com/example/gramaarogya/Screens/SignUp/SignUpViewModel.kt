@@ -2,6 +2,7 @@ package com.example.gramaarogya.Screens.SignUp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Repository.Auth.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -70,7 +71,7 @@ class SignUpViewModel(
         ) {
             _uiState.update {
                 it.copy(
-                    errorMessage = "Please fill all fields"
+                    errorRes =  R.string.auth_err_fill_all
                 )
             }
 
@@ -80,7 +81,7 @@ class SignUpViewModel(
         if (!state.termsAccepted) {
             _uiState.update {
                 it.copy(
-                    errorMessage = "Please accept the terms and conditions"
+                    errorRes =  R.string.auth_err_accept_terms
                 )
             }
 
@@ -92,7 +93,7 @@ class SignUpViewModel(
             _uiState.update {
                 it.copy(
                     isLoading = true,
-                    errorMessage = null
+                    errorRes = null
                 )
             }
 
@@ -116,7 +117,7 @@ class SignUpViewModel(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = "An account with this email already exists"
+                        errorRes = R.string.auth_err_email_exists
                     )
                 }
             }

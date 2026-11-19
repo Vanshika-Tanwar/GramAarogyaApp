@@ -2,6 +2,7 @@ package com.example.gramaarogya.Screens.SignIn
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Repository.Auth.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +21,7 @@ class SignInViewModel(
         _uiState.update {
             it.copy(
                 email = value,
-                errorMessage = null
+                errorRes = null
             )
         }
     }
@@ -29,7 +30,7 @@ class SignInViewModel(
         _uiState.update {
             it.copy(
                 password = value,
-                errorMessage = null
+                errorRes = null
             )
         }
     }
@@ -52,7 +53,7 @@ class SignInViewModel(
 
             _uiState.update {
                 it.copy(
-                    errorMessage = "Please enter email and password"
+                    errorRes = R.string.auth_err_enter_credentials
                 )
             }
 
@@ -64,7 +65,7 @@ class SignInViewModel(
             _uiState.update {
                 it.copy(
                     isLoading = true,
-                    errorMessage = null
+                    errorRes = null
                 )
             }
 
@@ -91,7 +92,7 @@ class SignInViewModel(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = "Invalid email or password"
+                        errorRes = R.string.auth_err_invalid_credentials
                     )
                 }
             }

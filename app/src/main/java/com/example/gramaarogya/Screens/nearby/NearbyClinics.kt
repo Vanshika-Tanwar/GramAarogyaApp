@@ -1,5 +1,4 @@
 package com.example.gramaarogya.Screens.nearby
-// maps api key : AIzaSyB6IxaqsuefQ9RqVSI0QI4hehMfKhLFq0U
 import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -40,7 +39,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gramaarogya.Models.Clinics
@@ -54,9 +52,11 @@ import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Screens.maps.MapScreen
 import com.example.gramaarogya.Screens.maps.MapsViewModel
 
@@ -112,9 +112,9 @@ fun NearbyClinics(navHostController: NavHostController) {
                     modifier = Modifier.padding(horizontal = 10.dp)
                 ) {
                     if (text.isEmpty() && !active) {
-                        Text(text = "Start typing to search for clinics...")
+                        Text(text = stringResource(R.string.clinics_start_typing))
                     } else {
-                        Text(text = "Displaying search results for '$text'")
+                        Text(text = stringResource(R.string.clinics_results_for, text))
                     }
                 }
 
@@ -230,7 +230,7 @@ fun displayClinics(clinics: Clinics) {
             ) {
                 Icon(
                     imageVector = Icons.Default.LocationOn,
-                    contentDescription = "location symbol"
+                    contentDescription = stringResource(R.string.clinics_cd_location)
                 )
                 Spacer(modifier = Modifier.width(2.dp))
                 Text(
@@ -243,12 +243,12 @@ fun displayClinics(clinics: Clinics) {
             ) {
                 Icon(
                     imageVector = Icons.Default.Call,
-                    contentDescription = "phone symbol"
+                    contentDescription = stringResource(R.string.clinics_cd_call)
                 )
                 Spacer(modifier = Modifier.width(2.dp))
                 Icon(
                     imageVector = Icons.Default.Videocam,
-                    contentDescription = "phone symbol"
+                    contentDescription = stringResource(R.string.clinics_cd_video_call)
                 )
                 Spacer(modifier = Modifier.width(2.dp))
                 if (clinics.phoneNo != 0L) {
@@ -293,12 +293,12 @@ fun CustomSearchBar(
                     shape = RoundedCornerShape(10.dp)
                 ),
             placeholder = {
-                Text(text = "Search clinics", color = Color.Gray)
+                Text(text = stringResource(R.string.clinics_search_hint), color = Color.Gray)
             },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
-                    contentDescription = "Search Icon"
+                    contentDescription = stringResource(R.string.common_search)
                 )
             },
             trailingIcon = {
@@ -306,7 +306,7 @@ fun CustomSearchBar(
                     Icon(
                         modifier = Modifier.clickable { onCloseClick() },
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close Icon"
+                        contentDescription = stringResource(R.string.common_close)
                     )
                 }
             },

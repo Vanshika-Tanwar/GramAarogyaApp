@@ -1,6 +1,5 @@
 package com.example.gramaarogya.Screens.SignUp
 
-import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -45,10 +44,12 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.Navigation.GramAarogyaAppNav
 import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Repository.Auth.AuthRepository
 import com.example.gramaarogya.Repository.Auth.AuthViewModelFactory
 import com.example.gramaarogya.ui.theme.bgWhite
@@ -89,7 +90,7 @@ fun RegisterScreen(
 
                 // Hey there
                 Text(
-                    text = "Hey there",
+                    text = stringResource(R.string.auth_hey_there),
                     //style = MaterialTheme.typography.headlineSmall,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
@@ -101,7 +102,7 @@ fun RegisterScreen(
 
                 // Create an Account
                 Text(
-                    text = "Create an Account",
+                    text = stringResource(R.string.auth_create_account),
                     //style = MaterialTheme.typography.headlineMedium,
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold
@@ -118,7 +119,7 @@ fun RegisterScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "First Name",
+                            text = stringResource(R.string.auth_first_name),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -126,7 +127,7 @@ fun RegisterScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person,
-                            contentDescription = "First Name",
+                            contentDescription = stringResource(R.string.auth_first_name),
                             tint = Color.DarkGray
                         )
                     },
@@ -159,7 +160,7 @@ fun RegisterScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "Last Name",
+                            text = stringResource(R.string.auth_last_name),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -167,7 +168,7 @@ fun RegisterScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person,
-                            contentDescription = "Last Name",
+                            contentDescription = stringResource(R.string.auth_last_name),
                             tint = Color.DarkGray
                         )
                     },
@@ -200,7 +201,7 @@ fun RegisterScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "Email",
+                            text = stringResource(R.string.auth_email),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -208,7 +209,7 @@ fun RegisterScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Email,
-                            contentDescription = "Email"
+                            contentDescription = stringResource(R.string.auth_email)
                         )
                     },
                     shape = RoundedCornerShape(14.dp),
@@ -240,7 +241,7 @@ fun RegisterScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "Password",
+                            text = stringResource(R.string.auth_password),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -248,7 +249,7 @@ fun RegisterScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Lock,
-                            contentDescription = "Password"
+                            contentDescription = stringResource(R.string.auth_password)
                         )
                     },
                     shape = RoundedCornerShape(14.dp),
@@ -290,7 +291,7 @@ fun RegisterScreen(
                     Spacer(modifier = Modifier.width(2.dp))
 
                     Text(
-                        text = "I agree to the Terms and Conditions",
+                        text = stringResource(R.string.auth_terms),
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp
                     )
@@ -299,6 +300,9 @@ fun RegisterScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 // Register button
+                uiState.errorRes?.let {
+                    Text(text = stringResource(it), color = Color.Red, fontSize = 14.sp)
+                }
                 Button(
                     onClick = {
                         viewModel.registerUser {
@@ -319,7 +323,7 @@ fun RegisterScreen(
                         .height(54.dp),
                     enabled = !uiState.isLoading && viewModel.canRegister()
                 ) {
-                    Text("Register")
+                    Text(stringResource(R.string.auth_register))
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
@@ -340,12 +344,12 @@ fun RegisterScreen(
                 ) {
 
                     Text(
-                        text = "Already have an account?",
+                        text = stringResource(R.string.auth_have_account),
                         style = MaterialTheme.typography.bodyMedium
                     )
 
                     Text(
-                        text = " Login",
+                        text = " " + stringResource(R.string.auth_login),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,

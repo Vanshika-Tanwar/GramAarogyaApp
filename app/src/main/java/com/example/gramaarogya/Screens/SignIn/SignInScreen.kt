@@ -1,6 +1,5 @@
 package com.example.gramaarogya.Screens.SignIn
 
-import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -47,9 +46,11 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.Navigation.GramAarogyaAppNavItem
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Repository.Auth.AuthRepository
 import com.example.gramaarogya.Repository.Auth.AuthViewModelFactory
 import com.example.gramaarogya.ui.theme.bgWhite
@@ -91,7 +92,7 @@ fun SignInScreen(
                 Spacer(modifier = Modifier.height(30.dp))
 
                 Text(
-                    text = "Hey there",
+                    text = stringResource(R.string.auth_hey_there),
                     //style = MaterialTheme.typography.headlineSmall,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
@@ -102,7 +103,7 @@ fun SignInScreen(
                 Spacer(modifier = Modifier.height(6.dp))
 
                 Text(
-                    text = "Welcome Back",
+                    text = stringResource(R.string.auth_welcome_back),
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -118,7 +119,7 @@ fun SignInScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "Email",
+                            text = stringResource(R.string.auth_email),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -126,7 +127,7 @@ fun SignInScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Email,
-                            contentDescription = "Email"
+                            contentDescription = stringResource(R.string.auth_email)
                         )
                     },
                     shape = RoundedCornerShape(14.dp),
@@ -158,7 +159,7 @@ fun SignInScreen(
                     singleLine = true,
                     placeholder = {
                         Text(
-                            text = "Password",
+                            text = stringResource(R.string.auth_password),
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Normal
                         )
@@ -166,7 +167,7 @@ fun SignInScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Lock,
-                            contentDescription = "Password"
+                            contentDescription = stringResource(R.string.auth_password)
                         )
                     },
                     shape = RoundedCornerShape(14.dp),
@@ -188,7 +189,9 @@ fun SignInScreen(
                 )
 
                 Spacer(modifier = Modifier.height(300.dp))
-
+                uiState.errorRes?.let {
+                    Text(text = stringResource(it), color = Color.Red, fontSize = 14.sp)
+                }
                 Button(
                     onClick = {
                         viewModel.signIn {
@@ -208,7 +211,7 @@ fun SignInScreen(
                         .height(54.dp),
                     enabled = viewModel.canSignIn() && !uiState.isLoading
                 ) {
-                    Text("Login")
+                    Text(stringResource(R.string.auth_login))
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
@@ -228,12 +231,12 @@ fun SignInScreen(
                 ) {
 
                     Text(
-                        text = "Don't have an account yet?",
+                        text = stringResource(R.string.auth_no_account),
                         style = MaterialTheme.typography.bodyMedium
                     )
 
                     Text(
-                        text = " Register",
+                        text = " " + stringResource(R.string.auth_register),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Bold,
                     )

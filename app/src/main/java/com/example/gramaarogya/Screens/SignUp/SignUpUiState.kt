@@ -1,5 +1,7 @@
 package com.example.gramaarogya.Screens.SignUp
 
+import androidx.annotation.StringRes
+
 data class SignUpUiState(
     val firstName: String = "",
     val lastName: String = "",
@@ -7,5 +9,5 @@ data class SignUpUiState(
     val password: String = "",
     val termsAccepted: Boolean = false,
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    @StringRes val errorRes: Int? = null
 )

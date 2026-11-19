@@ -1,3 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gram Aarogya</string>
+    <string name="app_name" translatable="false">Gram Aarogya</string>
+
+    <!-- Language screen. Shown before any language is applied, so these are the same in every language -->
+    <string name="lang_choose_en" translatable="false">Choose your language</string>
+    <string name="lang_choose_hi" translatable="false">(भाषा चुनें)</string>
+    <string name="lang_choose_pa" translatable="false">(ਭਾਸ਼ਾ ਚੁਣੋ)</string>
+    <string name="lang_name_en" translatable="false">English</string>
+    <string name="lang_name_hi" translatable="false">हिन्दी</string>
+    <string name="lang_name_pa" translatable="false">ਪੰਜਾਬੀ</string>
+    <string name="lang_submit" translatable="false">Submit / जमा करें / ਜਮ੍ਹਾਂ ਕਰੋ</string>
+
+    <!-- Common -->
+    <string name="common_back">Back</string>
+    <string name="common_loading">Loading...</string>
+    <string name="common_generic_error">Something went wrong. Please try again.</string>
+    <string name="common_search">Search</string>
+    <string name="common_close">Close</string>
+
+    <!-- Sign up and sign in -->
+    <string name="auth_hey_there">Hey there</string>
+    <string name="auth_create_account">Create an Account</string>
+    <string name="auth_welcome_back">Welcome Back</string>
+    <string name="auth_first_name">First Name</string>
+    <string name="auth_last_name">Last Name</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_terms">I agree to the Terms and Conditions</string>
+    <string name="auth_register">Register</string>
+    <string name="auth_login">Login</string>
+    <string name="auth_have_account">Already have an account?</string>
+    <string name="auth_no_account">Don\'t have an account yet?</string>
+    <string name="auth_err_fill_all">Please fill all fields</string>
+    <string name="auth_err_accept_terms">Please accept the terms and conditions</string>
+    <string name="auth_err_email_exists">An account with this email already exists</string>
+    <string name="auth_err_enter_credentials">Please enter email and password</string>
+    <string name="auth_err_invalid_credentials">Invalid email or password</string>
+
+    <!-- Dashboard -->
+    <string name="dash_welcome">Welcome %1$s</string>
+    <string name="dash_how_can_we_help">How can we help you</string>
+    <string name="dash_profile">Profile</string>
+    <string name="feature_report_title">Report Analysis</string>
+    <string name="feature_report_desc">Upload a photo of your medical report and get a simple summary</string>
+    <string name="feature_consult_title">Consult a Doctor</string>
+    <string name="feature_consult_desc">Talk to a doctor on a video call</string>
+    <string name="feature_clinics_title">Nearby Clinics</string>
+    <string name="feature_clinics_desc">Find clinics and hospitals close to you</string>
+    <string name="feature_symptom_title">Symptom Checker</string>
+    <string name="feature_symptom_desc">Describe how you feel and get general health guidance</string>
+    <string name="feature_records_title">Health Records</string>
+    <string name="feature_records_desc">See your profile and past consultations</string>
+    <string name="feature_medicine_title">Medicine Availability</string>
+    <string name="feature_medicine_desc">Check which medicines are available nearby</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Your Profile</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_phone">Phone Number</string>
+    <string name="profile_address">Address</string>
+    <string name="profile_dob">Date of Birth</string>
+    <string name="profile_gender">Gender</string>
+    <string name="profile_recent_consultations">Recent Consultations</string>
+
+    <!-- Symptom checker chatbot -->
+    <string name="bot_name">Doctor Sahab</string>
+    <string name="bot_subtitle">your health assistant</string>
+    <string name="bot_tip">An apple a day keeps the doctor away!</string>
+    <string name="bot_placeholder">Ask Doctor Sahab...</string>
+    <string name="bot_send">Send</string>
+    <string name="bot_typing">typing...</string>
+
+    <!-- Nearby clinics -->
+    <string name="clinics_search_hint">Search clinics</string>
+    <string name="clinics_start_typing">Start typing to search for clinics...</string>
+    <string name="clinics_results_for">Displaying search results for “%1$s”</string>
+    <string name="clinics_default_name">Clinic</string>
+    <string name="clinics_cd_location">Location</string>
+    <string name="clinics_cd_call">Call</string>
+    <string name="clinics_cd_video_call">Video call</string>
+    <string name="clinics_cd_directions">Get directions</string>
+
+    <!-- Report analysis -->
+    <string name="report_upload">Upload your report image</string>
+    <string name="report_summary_placeholder">Summary will appear here</string>
+    <string name="report_selected_file">Selected file</string>
+    <string name="report_error">Error: %1$s</string>
+    <string name="report_err_read_image">Could not read the image</string>
+    <string name="report_err_no_response">No response from model</string>
+    <string name="report_h_type">REPORT TYPE</string>
+    <string name="report_h_summary">SUMMARY</string>
+    <string name="report_h_normal">NORMAL RESULTS</string>
+    <string name="report_h_attention">NEEDS ATTENTION</string>
+    <string name="report_h_tips">TIPS</string>
+    <string name="report_h_next">NEXT STEPS</string>
+
+    <!-- Video call. Teammate is working on this screen, so these are ready for later -->
+    <string name="video_cd_doctor_feed">Doctor video feed</string>
+    <string name="video_cd_patient_feed">Patient video feed</string>
+    <string name="video_cd_switch_camera">Switch camera</string>
+    <string name="video_cd_mute">Mute mic</string>
+    <string name="video_cd_end_call">End call</string>
+    <string name="video_cd_speaker">Speakerphone</string>
 </resources>

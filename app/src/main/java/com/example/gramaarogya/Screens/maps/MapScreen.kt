@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.example.gramaarogya.BuildConfig
 import com.example.gramaarogya.Models.Clinics
+import com.example.gramaarogya.R
+import com.example.gramaarogya.Screens.lang.LanguageManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
@@ -49,6 +51,7 @@ import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberMarkerState
+import java.util.Locale
 
 private val NABHA_DEFAULT = LatLng(30.3745, 76.1517)
 
@@ -95,7 +98,9 @@ fun MapScreen(
 
     if (BuildConfig.MAPS_API_KEY.isNotEmpty() && !Places.isInitialized()) {
         Places.initializeWithNewPlacesApiEnabled(
-            context.applicationContext, BuildConfig.MAPS_API_KEY
+            context.applicationContext,
+            BuildConfig.MAPS_API_KEY,
+            Locale.forLanguageTag(LanguageManager.get(context) ?: "en")
         )
     }
 
@@ -159,7 +164,7 @@ fun MapScreen(
                         val loc = place.location ?: return@mapIndexedNotNull null
                         Clinics(
                             id = index,
-                            title = place.displayName ?: "Clinic",
+                            title = place.displayName ?: context.getString(R.string.clinics_default_name),
                             address = place.formattedAddress ?: "",
                             phoneNo = 0L,
                             lat = loc.latitude,

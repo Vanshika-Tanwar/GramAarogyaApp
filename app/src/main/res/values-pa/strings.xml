@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_back">ਵਾਪਸ</string>
+    <string name="common_loading">ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...</string>
+    <string name="common_generic_error">ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+    <string name="common_search">ਖੋਜੋ</string>
+    <string name="common_close">ਬੰਦ ਕਰੋ</string>
+
+    <!-- Sign up and sign in -->
+    <string name="auth_hey_there">ਸਤ ਸ੍ਰੀ ਅਕਾਲ</string>
+    <string name="auth_create_account">ਖਾਤਾ ਬਣਾਓ</string>
+    <string name="auth_welcome_back">ਦੁਬਾਰਾ ਜੀ ਆਇਆਂ ਨੂੰ</string>
+    <string name="auth_first_name">ਪਹਿਲਾ ਨਾਮ</string>
+    <string name="auth_last_name">ਆਖਰੀ ਨਾਮ</string>
+    <string name="auth_email">ਈਮੇਲ</string>
+    <string name="auth_password">ਪਾਸਵਰਡ</string>
+    <string name="auth_terms">ਮੈਂ ਨਿਯਮਾਂ ਅਤੇ ਸ਼ਰਤਾਂ ਨਾਲ ਸਹਿਮਤ ਹਾਂ</string>
+    <string name="auth_register">ਰਜਿਸਟਰ ਕਰੋ</string>
+    <string name="auth_login">ਲੌਗਇਨ ਕਰੋ</string>
+    <string name="auth_have_account">ਕੀ ਤੁਹਾਡਾ ਪਹਿਲਾਂ ਤੋਂ ਖਾਤਾ ਹੈ?</string>
+    <string name="auth_no_account">ਅਜੇ ਤੱਕ ਖਾਤਾ ਨਹੀਂ ਹੈ?</string>
+    <string name="auth_err_fill_all">ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੀ ਜਾਣਕਾਰੀ ਭਰੋ</string>
+    <string name="auth_err_accept_terms">ਕਿਰਪਾ ਕਰਕੇ ਨਿਯਮ ਅਤੇ ਸ਼ਰਤਾਂ ਮੰਨੋ</string>
+    <string name="auth_err_email_exists">ਇਸ ਈਮੇਲ ਨਾਲ ਖਾਤਾ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ</string>
+    <string name="auth_err_enter_credentials">ਕਿਰਪਾ ਕਰਕੇ ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਦਾਖਲ ਕਰੋ</string>
+    <string name="auth_err_invalid_credentials">ਈਮੇਲ ਜਾਂ ਪਾਸਵਰਡ ਗਲਤ ਹੈ</string>
+
+    <!-- Dashboard -->
+    <string name="dash_welcome">ਜੀ ਆਇਆਂ ਨੂੰ, %1$s</string>
+    <string name="dash_how_can_we_help">ਅਸੀਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦੇ ਹਾਂ</string>
+    <string name="dash_profile">ਪ੍ਰੋਫਾਈਲ</string>
+    <string name="feature_report_title">ਰਿਪੋਰਟ ਵਿਸ਼ਲੇਸ਼ਣ</string>
+    <string name="feature_report_desc">ਆਪਣੀ ਮੈਡੀਕਲ ਰਿਪੋਰਟ ਦੀ ਫੋਟੋ ਪਾਓ ਅਤੇ ਸੌਖੀ ਭਾਸ਼ਾ ਵਿੱਚ ਸਾਰ ਪਾਓ</string>
+    <string name="feature_consult_title">ਡਾਕਟਰ ਨਾਲ ਸਲਾਹ ਕਰੋ</string>
+    <string name="feature_consult_desc">ਵੀਡੀਓ ਕਾਲ ਰਾਹੀਂ ਡਾਕਟਰ ਨਾਲ ਗੱਲ ਕਰੋ</string>
+    <string name="feature_clinics_title">ਨੇੜਲੇ ਕਲੀਨਿਕ</string>
+    <string name="feature_clinics_desc">ਆਪਣੇ ਨੇੜੇ ਦੇ ਕਲੀਨਿਕ ਅਤੇ ਹਸਪਤਾਲ ਲੱਭੋ</string>
+    <string name="feature_symptom_title">ਲੱਛਣ ਜਾਂਚੋ</string>
+    <string name="feature_symptom_desc">ਆਪਣੀ ਤਕਲੀਫ਼ ਦੱਸੋ ਅਤੇ ਆਮ ਸਿਹਤ ਸਲਾਹ ਲਓ</string>
+    <string name="feature_records_title">ਸਿਹਤ ਰਿਕਾਰਡ</string>
+    <string name="feature_records_desc">ਆਪਣੀ ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਪਿਛਲੀਆਂ ਸਲਾਹਾਂ ਦੇਖੋ</string>
+    <string name="feature_medicine_title">ਦਵਾਈਆਂ ਦੀ ਉਪਲਬਧਤਾ</string>
+    <string name="feature_medicine_desc">ਦੇਖੋ ਕਿ ਨੇੜੇ ਕਿਹੜੀਆਂ ਦਵਾਈਆਂ ਮਿਲ ਰਹੀਆਂ ਹਨ</string>
+
+    <!-- Profile -->
+    <string name="profile_title">ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ</string>
+    <string name="profile_picture">ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ</string>
+    <string name="profile_name">ਨਾਮ</string>
+    <string name="profile_phone">ਫ਼ੋਨ ਨੰਬਰ</string>
+    <string name="profile_address">ਪਤਾ</string>
+    <string name="profile_dob">ਜਨਮ ਮਿਤੀ</string>
+    <string name="profile_gender">ਲਿੰਗ</string>
+    <string name="profile_recent_consultations">ਹਾਲੀਆ ਸਲਾਹਾਂ</string>
+
+    <!-- Symptom checker chatbot -->
+    <string name="bot_name">ਡਾਕਟਰ ਸਾਹਿਬ</string>
+    <string name="bot_subtitle">ਤੁਹਾਡਾ ਸਿਹਤ ਸਹਾਇਕ</string>
+    <string name="bot_tip">ਰੋਜ਼ ਇੱਕ ਸੇਬ ਖਾਓ, ਡਾਕਟਰ ਨੂੰ ਦੂਰ ਭਜਾਓ!</string>
+    <string name="bot_placeholder">ਡਾਕਟਰ ਸਾਹਿਬ ਨੂੰ ਪੁੱਛੋ...</string>
+    <string name="bot_send">ਭੇਜੋ</string>
+    <string name="bot_typing">ਲਿਖ ਰਹੇ ਹਨ...</string>
+
+    <!-- Nearby clinics -->
+    <string name="clinics_search_hint">ਕਲੀਨਿਕ ਲੱਭੋ</string>
+    <string name="clinics_start_typing">ਕਲੀਨਿਕ ਲੱਭਣ ਲਈ ਲਿਖਣਾ ਸ਼ੁਰੂ ਕਰੋ...</string>
+    <string name="clinics_results_for">“%1$s” ਲਈ ਖੋਜ ਨਤੀਜੇ</string>
+    <string name="clinics_default_name">ਕਲੀਨਿਕ</string>
+    <string name="clinics_cd_location">ਥਾਂ</string>
+    <string name="clinics_cd_call">ਕਾਲ ਕਰੋ</string>
+    <string name="clinics_cd_video_call">ਵੀਡੀਓ ਕਾਲ</string>
+    <string name="clinics_cd_directions">ਰਸਤਾ ਦੇਖੋ</string>
+
+    <!-- Report analysis -->
+    <string name="report_upload">ਆਪਣੀ ਰਿਪੋਰਟ ਦੀ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ</string>
+    <string name="report_summary_placeholder">ਸਾਰ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ</string>
+    <string name="report_selected_file">ਚੁਣੀ ਗਈ ਫ਼ਾਈਲ</string>
+    <string name="report_error">ਗਲਤੀ: %1$s</string>
+    <string name="report_err_read_image">ਫੋਟੋ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ</string>
+    <string name="report_err_no_response">ਕੋਈ ਜਵਾਬ ਨਹੀਂ ਮਿਲਿਆ</string>
+    <string name="report_h_type">ਰਿਪੋਰਟ ਦੀ ਕਿਸਮ</string>
+    <string name="report_h_summary">ਸੰਖੇਪ</string>
+    <string name="report_h_normal">ਆਮ ਨਤੀਜੇ</string>
+    <string name="report_h_attention">ਧਿਆਨ ਦੇਣ ਯੋਗ ਗੱਲਾਂ</string>
+    <string name="report_h_tips">ਸੁਝਾਅ</string>
+    <string name="report_h_next">ਅਗਲੇ ਕਦਮ</string>
+
+    <!-- Video call -->
+    <string name="video_cd_doctor_feed">ਡਾਕਟਰ ਦੀ ਵੀਡੀਓ</string>
+    <string name="video_cd_patient_feed">ਮਰੀਜ਼ ਦੀ ਵੀਡੀਓ</string>
+    <string name="video_cd_switch_camera">ਕੈਮਰਾ ਬਦਲੋ</string>
+    <string name="video_cd_mute">ਮਾਈਕ ਮਿਊਟ ਕਰੋ</string>
+    <string name="video_cd_end_call">ਕਾਲ ਖਤਮ ਕਰੋ</string>
+    <string name="video_cd_speaker">ਸਪੀਕਰ</string>
+</resources>

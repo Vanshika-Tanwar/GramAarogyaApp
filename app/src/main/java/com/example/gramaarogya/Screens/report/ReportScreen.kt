@@ -36,11 +36,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.R
 
 @Composable
 fun ReportScreen(navHostController: NavHostController, viewModel: ReportViewModel = viewModel()) {
@@ -62,11 +64,11 @@ fun ReportScreen(navHostController: NavHostController, viewModel: ReportViewMode
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Back",
+                contentDescription = stringResource(R.string.common_back),
                 modifier = Modifier.clickable { navHostController.popBackStack() }
             )
             Spacer(Modifier.width(16.dp))
-            Text("Report Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Text(stringResource(R.string.feature_report_title), fontWeight = FontWeight.Bold, fontSize = 20.sp)
         }
 
         Spacer(Modifier.height(16.dp))
@@ -87,7 +89,7 @@ fun ReportScreen(navHostController: NavHostController, viewModel: ReportViewMode
                         modifier = Modifier.size(48.dp)
                     )
                     Spacer(Modifier.height(8.dp))
-                    Text(fileUri?.let { getFileName(context, it) } ?: "Upload your report image")
+                    Text(fileUri?.let { getFileName(context, it) } ?: stringResource(R.string.report_upload))
                 }
             }
         }
@@ -106,9 +108,9 @@ fun ReportScreen(navHostController: NavHostController, viewModel: ReportViewMode
                 val err = viewModel.error
                 when {
                     viewModel.isLoading -> CircularProgressIndicator()
-                    err != null -> Text("Error: $err")
+                    err != null -> Text(stringResource(R.string.report_error, err))
                     result != null -> Text(result, modifier = Modifier.verticalScroll(rememberScrollState()))
-                    else -> Text("Summary will appear here")
+                    else -> Text(stringResource(R.string.report_summary_placeholder))
                 }
             }
         }
@@ -120,5 +122,5 @@ fun getFileName(context: Context, uri: Uri): String {
         val i = c.getColumnIndex(OpenableColumns.DISPLAY_NAME)
         if (c.moveToFirst() && i >= 0) return c.getString(i)
     }
-    return "Selected file"
+    return context.getString(R.string.report_selected_file)
 }

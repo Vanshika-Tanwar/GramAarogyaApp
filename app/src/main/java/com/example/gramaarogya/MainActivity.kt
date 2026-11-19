@@ -1,5 +1,6 @@
 package com.example.gramaarogya
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.Navigation.GramAarogyaAppNav
 import com.example.gramaarogya.Repository.Auth.AuthRepository
+import com.example.gramaarogya.Screens.lang.LanguageManager
 import com.google.firebase.appcheck.FirebaseAppCheck
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 
@@ -29,5 +31,8 @@ class MainActivity : ComponentActivity() {
             val navHostController = rememberNavController()
             GramAarogyaAppNav(navHostController = navHostController)
         }
+    }
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguageManager.wrap(newBase))
     }
 }

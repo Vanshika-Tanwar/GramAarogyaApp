@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="common_back">वापस</string>
+    <string name="common_loading">लोड हो रहा है...</string>
+    <string name="common_generic_error">कुछ गड़बड़ हो गई। कृपया दोबारा कोशिश करें।</string>
+    <string name="common_search">खोजें</string>
+    <string name="common_close">बंद करें</string>
+
+    <!-- Sign up and sign in -->
+    <string name="auth_hey_there">नमस्ते</string>
+    <string name="auth_create_account">खाता बनाएँ</string>
+    <string name="auth_welcome_back">फिर से स्वागत है</string>
+    <string name="auth_first_name">पहला नाम</string>
+    <string name="auth_last_name">अंतिम नाम</string>
+    <string name="auth_email">ईमेल</string>
+    <string name="auth_password">पासवर्ड</string>
+    <string name="auth_terms">मैं नियम और शर्तों से सहमत हूँ</string>
+    <string name="auth_register">रजिस्टर करें</string>
+    <string name="auth_login">लॉगिन करें</string>
+    <string name="auth_have_account">क्या आपके पास पहले से खाता है?</string>
+    <string name="auth_no_account">अभी तक खाता नहीं है?</string>
+    <string name="auth_err_fill_all">कृपया सभी जानकारी भरें</string>
+    <string name="auth_err_accept_terms">कृपया नियम और शर्तें स्वीकार करें</string>
+    <string name="auth_err_email_exists">इस ईमेल से खाता पहले से मौजूद है</string>
+    <string name="auth_err_enter_credentials">कृपया ईमेल और पासवर्ड दर्ज करें</string>
+    <string name="auth_err_invalid_credentials">ईमेल या पासवर्ड गलत है</string>
+
+    <!-- Dashboard -->
+    <string name="dash_welcome">स्वागत है, %1$s</string>
+    <string name="dash_how_can_we_help">हम आपकी कैसे मदद कर सकते हैं</string>
+    <string name="dash_profile">प्रोफ़ाइल</string>
+    <string name="feature_report_title">रिपोर्ट विश्लेषण</string>
+    <string name="feature_report_desc">अपनी मेडिकल रिपोर्ट की फोटो डालें और आसान भाषा में सारांश पाएँ</string>
+    <string name="feature_consult_title">डॉक्टर से सलाह लें</string>
+    <string name="feature_consult_desc">वीडियो कॉल पर डॉक्टर से बात करें</string>
+    <string name="feature_clinics_title">आस-पास के क्लिनिक</string>
+    <string name="feature_clinics_desc">अपने पास के क्लिनिक और अस्पताल खोजें</string>
+    <string name="feature_symptom_title">लक्षण जाँचें</string>
+    <string name="feature_symptom_desc">अपनी तकलीफ़ बताएँ और सामान्य स्वास्थ्य सलाह पाएँ</string>
+    <string name="feature_records_title">स्वास्थ्य रिकॉर्ड</string>
+    <string name="feature_records_desc">अपनी प्रोफ़ाइल और पिछली सलाह देखें</string>
+    <string name="feature_medicine_title">दवाइयों की उपलब्धता</string>
+    <string name="feature_medicine_desc">देखें कि पास में कौन सी दवाइयाँ मिल रही हैं</string>
+
+    <!-- Profile -->
+    <string name="profile_title">आपकी प्रोफ़ाइल</string>
+    <string name="profile_picture">प्रोफ़ाइल फ़ोटो</string>
+    <string name="profile_name">नाम</string>
+    <string name="profile_phone">फ़ोन नंबर</string>
+    <string name="profile_address">पता</string>
+    <string name="profile_dob">जन्म तिथि</string>
+    <string name="profile_gender">लिंग</string>
+    <string name="profile_recent_consultations">हाल की सलाह</string>
+
+    <!-- Symptom checker chatbot -->
+    <string name="bot_name">डॉक्टर साहब</string>
+    <string name="bot_subtitle">आपका स्वास्थ्य सहायक</string>
+    <string name="bot_tip">रोज़ एक सेब खाओ, डॉक्टर को दूर भगाओ!</string>
+    <string name="bot_placeholder">डॉक्टर साहब से पूछें...</string>
+    <string name="bot_send">भेजें</string>
+    <string name="bot_typing">लिख रहे हैं...</string>
+
+    <!-- Nearby clinics -->
+    <string name="clinics_search_hint">क्लिनिक खोजें</string>
+    <string name="clinics_start_typing">क्लिनिक खोजने के लिए लिखना शुरू करें...</string>
+    <string name="clinics_results_for">“%1$s” के लिए खोज परिणाम</string>
+    <string name="clinics_default_name">क्लिनिक</string>
+    <string name="clinics_cd_location">स्थान</string>
+    <string name="clinics_cd_call">कॉल करें</string>
+    <string name="clinics_cd_video_call">वीडियो कॉल</string>
+    <string name="clinics_cd_directions">रास्ता देखें</string>
+
+    <!-- Report analysis -->
+    <string name="report_upload">अपनी रिपोर्ट की फोटो अपलोड करें</string>
+    <string name="report_summary_placeholder">सारांश यहाँ दिखाई देगा</string>
+    <string name="report_selected_file">चुनी गई फ़ाइल</string>
+    <string name="report_error">त्रुटि: %1$s</string>
+    <string name="report_err_read_image">फोटो पढ़ी नहीं जा सकी</string>
+    <string name="report_err_no_response">कोई जवाब नहीं मिला</string>
+    <string name="report_h_type">रिपोर्ट का प्रकार</string>
+    <string name="report_h_summary">सारांश</string>
+    <string name="report_h_normal">सामान्य नतीजे</string>
+    <string name="report_h_attention">ध्यान देने योग्य बातें</string>
+    <string name="report_h_tips">सुझाव</string>
+    <string name="report_h_next">अगले कदम</string>
+
+    <!-- Video call -->
+    <string name="video_cd_doctor_feed">डॉक्टर का वीडियो</string>
+    <string name="video_cd_patient_feed">मरीज़ का वीडियो</string>
+    <string name="video_cd_switch_camera">कैमरा बदलें</string>
+    <string name="video_cd_mute">माइक म्यूट करें</string>
+    <string name="video_cd_end_call">कॉल समाप्त करें</string>
+    <string name="video_cd_speaker">स्पीकर</string>
+</resources>

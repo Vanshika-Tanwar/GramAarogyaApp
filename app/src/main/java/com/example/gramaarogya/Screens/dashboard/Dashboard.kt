@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -55,20 +56,20 @@ fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel 
     )
 )) {
     val featureList = listOf(
-        DashboardFeatures(title = "Report Analysis", route = "report", description = "desc"),
+        DashboardFeatures(title = stringResource(R.string.feature_report_title), route = "report", description = stringResource(R.string.feature_report_desc)),
         DashboardFeatures(
-            title = "Consult a Doctor",
+            title = stringResource(R.string.feature_consult_title),
             route = "videocall",
-            description = "desc",
+            description = stringResource(R.string.feature_consult_desc),
             imgResID = R.drawable.logo
         ),
-        DashboardFeatures(title = "Nearby Clinics", route = "nearbyclinic", description = "desc"),
-        DashboardFeatures(title = "Symptom Checker", route = "chatbot", description = "desc"),
-        DashboardFeatures(title = "Health Records", route = "profile", description = "desc"),
+        DashboardFeatures(title = stringResource(R.string.feature_clinics_title), route = "nearbyclinic", description = stringResource(R.string.feature_clinics_desc)),
+        DashboardFeatures(title = stringResource(R.string.feature_symptom_title), route = "chatbot", description = stringResource(R.string.feature_symptom_desc)),
+        DashboardFeatures(title = stringResource(R.string.feature_records_title), route = "profile", description = stringResource(R.string.feature_records_desc)),
         DashboardFeatures(
-            title = "Medicine Availability",
+            title = stringResource(R.string.feature_medicine_title),
             route = "nearbyclinic",
-            description = "desc",
+            description = stringResource(R.string.feature_medicine_desc),
         )
 
 
@@ -103,7 +104,7 @@ fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel 
                             .padding(horizontal = 15.dp, vertical = 8.dp)
                     ) {
                         Text(
-                            text = "Welcome $patientName",
+                            text = stringResource(R.string.dash_welcome, patientName),
                             fontSize = 20.sp,
                             style = TextStyle(color = bgWhite),
                             fontWeight = FontWeight.Bold
@@ -111,7 +112,7 @@ fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel 
                     }
                     Icon(
                         imageVector = Icons.Default.AccountCircle,
-                        contentDescription = "Profile",
+                        contentDescription = stringResource(R.string.dash_profile),
                         tint = Color.Black,
                         modifier = Modifier
                             .size(36.dp)
@@ -120,7 +121,7 @@ fun Dashboard(navHostController: NavHostController, viewModel: ProfileViewModel 
                 }
                 Spacer(modifier = Modifier.height(70.dp))
                 Text(
-                    text = "How can we help you",
+                    text = stringResource(R.string.dash_how_can_we_help),
                     style = TextStyle(color = Color.Black),
                     fontSize = 28.sp,
                     fontWeight = FontWeight.SemiBold

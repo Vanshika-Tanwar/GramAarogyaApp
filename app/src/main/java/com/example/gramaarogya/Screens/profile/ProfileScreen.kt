@@ -32,11 +32,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gramaarogya.R
 import com.example.gramaarogya.Database.AppDatabase
 import com.example.gramaarogya.R.drawable.prof
 
@@ -74,12 +76,12 @@ fun ProfileScreen(
         ) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Back",
+                contentDescription = stringResource(R.string.common_back),
                 modifier = Modifier.clickable { navHostController.popBackStack() }
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
-                text = "Your Profile",
+                text = stringResource(R.string.profile_title),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 color = Color.Black
@@ -97,7 +99,7 @@ fun ProfileScreen(
                 Box(contentAlignment = Alignment.Center) {
                     Image(
                         painter = painterResource(prof),
-                        contentDescription = "Profile Picture",
+                        contentDescription = stringResource(R.string.profile_picture),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(150.dp)
@@ -107,20 +109,19 @@ fun ProfileScreen(
                 }
                 Spacer(modifier = Modifier.height(32.dp))
                 // User Details Section
-                if (isLoading) {
-                    Text("Loading...", fontSize = 16.sp, color = Color.Gray)
-                } else {
-                    ProfileDetailField(label = "Name", value = profile.name)
-                    ProfileDetailField(label = "Email", value = profile.email)
-                    ProfileDetailField(label = "Phone Number", value = profile.phone)
-                    ProfileDetailField(label = "Address", value = profile.address)
-                    ProfileDetailField(label = "Date of Birth", value = profile.dob)
-                    ProfileDetailField(label = "Gender", value = profile.gender)
-                }
+                if(isLoading){
+                    Text(stringResource(R.string.common_loading), fontSize = 16.sp, color = Color.Gray)
+                }else{
+                ProfileDetailField(label = stringResource(R.string.profile_name), value = profile.name)
+                ProfileDetailField(label = stringResource(R.string.auth_email), value = profile.email)
+                ProfileDetailField(label = stringResource(R.string.profile_phone), value = profile.phone)
+                ProfileDetailField(label = stringResource(R.string.profile_address), value = profile.address)
+                ProfileDetailField(label = stringResource(R.string.profile_dob), value = profile.dob)
+                ProfileDetailField(label = stringResource(R.string.profile_gender), value = profile.gender)}
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "Recent Consultations",
+                    text = stringResource(R.string.profile_recent_consultations),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier

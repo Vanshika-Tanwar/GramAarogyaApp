@@ -1,5 +1,6 @@
 package com.example.gramaarogya.Screens.lang
 
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,7 +26,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -42,6 +45,7 @@ import com.example.gramaarogya.ui.theme.textGrey
 fun SelectLanguage(navHostController: NavHostController) {
 
     var selected_language by remember { mutableStateOf<String?>(null) }
+    val context = LocalContext.current
 
     Scaffold (
         containerColor = bgWhite,
@@ -69,11 +73,13 @@ fun SelectLanguage(navHostController: NavHostController) {
                 Column (
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 ) {
-                    Text(text = "Choose your language", fontSize = 24.sp, style = TextStyle(color = textGrey), fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.CenterHorizontally))
-                    Text(text = "(भाषा चुनें)", fontSize = 24.sp, style = TextStyle(color = textGrey), fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.CenterHorizontally))
+                    Text(text = stringResource(R.string.lang_choose_en), fontSize = 24.sp, style = TextStyle(color = textGrey), fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.CenterHorizontally))
+                    Text(text = stringResource(R.string.lang_choose_hi), fontSize = 24.sp, style = TextStyle(color = textGrey), fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.CenterHorizontally))
+                    Text(text = stringResource(R.string.lang_choose_pa), fontSize = 24.sp, style = TextStyle(color = textGrey), fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.CenterHorizontally))
+
                     // 1. angreji beat te
                     langaugeOption(
-                        "English",
+                        stringResource(R.string.lang_name_en),
                         "en",
                         isSelected = (selected_language == "en"),
                         onSelect = { selected_language = "en" }
@@ -81,24 +87,29 @@ fun SelectLanguage(navHostController: NavHostController) {
                     Spacer(modifier = Modifier.height(7.dp))
                     // 2. matrbhasha hindi
                     langaugeOption(
-                        "Hindi",
+                        stringResource(R.string.lang_name_hi),
                         "hi",
                         isSelected = (selected_language == "hi"),
                         onSelect = { selected_language = "hi" }
                     )
                     Spacer(modifier = Modifier.height(7.dp))
                     // 3. straight outta moosa pind
+                    //lmao
                     langaugeOption(
-                        "Punjabi",
-                        "pu",
-                        isSelected = (selected_language == "pu"),
-                        onSelect = { selected_language = "pu" }
+                        stringResource(R.string.lang_name_pa),
+                        "pa",
+                        isSelected = (selected_language == "pa"),
+                        onSelect = { selected_language = "pa" }
                     )
                     Spacer(modifier = Modifier.height(7.dp))
                     Button(
                         // selected lang ko ek data class mai store krwa denge / pass on to next screen
                         //onClick = {navHostController.navigate(GramAarogyaAppNavItem.dashboardScreen.route) },
-                        onClick = {navHostController.navigate(GramAarogyaAppNavItem.SignUpScreen.route) },
+                        onClick = {
+                            LanguageManager.save(context, selected_language!!)
+                            navHostController.navigate(GramAarogyaAppNavItem.SignUpScreen.route)
+                            (context as? Activity)?.recreate()
+                                  },
                         enabled = (selected_language != null),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Black,
@@ -111,7 +122,7 @@ fun SelectLanguage(navHostController: NavHostController) {
                             .fillMaxWidth(0.6f)
                             .align(Alignment.CenterHorizontally)
                     ) {
-                        Text(text = "Submit", style = TextStyle(color = bgWhite), fontWeight = FontWeight.Bold)
+                        Text(text =  stringResource(R.string.lang_submit), style = TextStyle(color = bgWhite), fontWeight = FontWeight.Bold)
                     }
                 }
             }
